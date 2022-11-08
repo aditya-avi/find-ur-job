@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+            <span class="login_text">Login</span>
+
+			<form class="login">
+
+				<div class="login__field">
+					<fa-icon [icon]="usericon"></fa-icon>
+					<input type="text" class="login__input" placeholder="User name / Email" (blur)="getemail($event)">
+				</div>
+				<div class="login__field">
+                    <fa-icon [icon]="passIcon"></fa-icon>
+					<input type="password" class="login__input" placeholder="Password" (blur)="getpass($event)">
+				</div>
+				<button class="button login__submit" (click)="clicklogin()">
+					<span class="button__text">Log In</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+                    <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
+
+				</button>				
+			</form>
+                <div class="text_parent">
+                    <span class="text_child">
+                        Forgot Password ?
+                    </span>
+                    
+                    <span class="text_child">
+                        Alreadu a user ?
+                    </span>
+                </div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+        
+	</div>
+</div>

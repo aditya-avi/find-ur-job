@@ -1,0 +1,56 @@
+<div class="">
+
+    <form class="login" #profile = "ngForm" (ngSubmit) = "submitf(profile.value)" >
+
+        <h3>educational details</h3>
+    <div class="">
+        <label for="resume">Resume : </label>
+        <input type="file" name="" id="" placeholder="resume" ngModel>
+    </div>
+
+    <div class="">
+        <label for="resume">Resume headline : </label>
+        <textarea name="" id="" cols="30" rows="10" placeholder="resume headline" ngModel name="headline" ngModel></textarea>
+    </div>
+
+    <div class="">
+        <label for="resume" class=""> Key skills : </label>
+        <input type="text" class="login_field" name="key_skills" id="" placeholder="key skills" ngModel>
+    </div>
+
+    <div class="">
+        <label for="resume">DOB : </label>
+        <input type="date" name="" id="" placeholder="DOB" ngModel>
+    </div>
+
+<h3>educational details</h3>
+    <div class="">
+        <label for="resume">SSC : </label>
+        <input type="text" name="SSC" id="" placeholder="education" ngModel>
+    </div>
+
+    <div class="">
+        <label for="resume">HSC : </label>
+        <input type="text" name="HSC" id="" placeholder="education" ngModel>
+    </div>
+
+    <div class="">
+        <label for="resume">Graduation : </label>
+        <input type="text" name="graduation" id="" placeholder="education" ngModel>
+    </div>
+
+    <div class="">
+        <label for="resume">Projects : </label>
+        <input type="text" name="projects" id="" placeholder="projects" ngModel (blur)="getp($event)">
+    </div>
+
+    
+    <div class="">
+        <input type="submit" value="submit">
+    </div>
+
+    <div class=""></div>
+    </form>
+
+
+</div>
