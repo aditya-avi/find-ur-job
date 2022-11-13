@@ -12,6 +12,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { JobPostComponent } from './job-post/job-post.component';
 import { CandHomeComponent } from './cand-home/cand-home.component';
 import { RecHomeComponent } from './rec-home/rec-home.component';
+import { ProfileSelectComponent } from './profile-select/profile-select.component';
+import { SignupseekComponent } from './signupseek/signupseek.component';
+import { EditJobPostComponent } from './edit-job-post/edit-job-post.component';
+import { ToastrModule } from 'ngx-toastr';
+
+
 
 @NgModule({
   declarations: [
@@ -21,14 +27,21 @@ import { RecHomeComponent } from './rec-home/rec-home.component';
     ProfileComponent,
     JobPostComponent,
     CandHomeComponent,
-    RecHomeComponent
+    RecHomeComponent,
+    ProfileSelectComponent,
+    SignupseekComponent,
+    EditJobPostComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

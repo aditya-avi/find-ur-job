@@ -1,6 +1,17 @@
-<div class="topnav">
+<!-- <div class="topnav">
+ 
+</div> -->
+
+<div class="topnav" *ngIf="!isloggedin">
   <a class="left" style="float:left">Naukri</a>
   <a routerLink="login" routerLinkActive="active">Log in</a>
-  <a routerLink="register" routerLinkActive="active">Register</a>
+  <a routerLink="selectprofile" routerLinkActive="active">Register</a>
+</div>
+
+<div class="topnav" *ngIf="isloggedin">
+  <a href="" (click)="logout()">Logout</a>
+  <a class="left" style="float:left">Naukri</a>
+  <a routerLink="login" routerLinkActive="active">Home</a>
+  <a routerLink="selectprofile" routerLinkActive="active">Profile</a>
 </div>
 <router-outlet></router-outlet>

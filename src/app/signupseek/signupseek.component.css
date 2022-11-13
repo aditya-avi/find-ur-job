@@ -13,7 +13,7 @@
 	font-family: sans-serif;
 }
 body {
-	background: linear-gradient(90deg, #C7C5F4, #776BCC);		
+	background: white;		
 }
 
 .container {
@@ -24,11 +24,11 @@ body {
 }
 
 .screen {		
-	background: linear-gradient(90deg, #5D54A4, #7C78B8);		
+	background: white;		
 	position: relative;	
 	height: 600px;
 	width: 360px;	
-	box-shadow: 0px 0px 24px #5C5696;
+	/* box-shadow: 0px 0px 24px #5C5696; */
 }
 
 .screen__content {
@@ -96,14 +96,14 @@ body {
 }
 
 .login__field {
-	padding: 12px 0px;	
+	padding: 20px 0px;	
 	position: relative;	
 }
 
 .login__icon {
 	position: absolute;
 	top: 30px;
-	color: #7875B5;
+	color: #f9f9f9;
 }
 
 .login__input {
@@ -213,23 +213,4 @@ body {
   .centered img {
 	width: 150px;
 	border-radius: 50%;
-  }
-
-  /* chip css starts here */
-  .chip {
-    display: inline-block;
-    padding: 0 20px;
-    height: 35px;
-    font-size: 13px;
-    line-height: 35px;
-    border-radius: 25px;
-    background-color: #f1f1f1;
-  }
-  .chip img {
-    cursor: pointer;
-    float: left;
-    margin: 5px 10px 0 -20px;
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
   }

@@ -8,10 +8,10 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  postlogin(email:any,password:any)
+  postlogin(email:string,password:any)
   {
     console.log('hit01');
     
-    return this.http.post('url',{"email":email,"password":password})
+    return this.http.post('http://localhost:8762/login/post',{"loginId":email,"password":password})
   }
 }

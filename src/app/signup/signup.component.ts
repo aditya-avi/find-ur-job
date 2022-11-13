@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormControl } from '@angular/forms';
+import {SignupService} from '../service/signup.service';
+import {Router} from "@angular/router"
+
+
 
 
 
@@ -17,9 +21,10 @@ selected_value = null;
   usericon = faUser;
   passIcon = faLock;
   arrowIcon = faCircleChevronRight
-  
+  profile : any;
+  prof:string="rec";
 
-  constructor() { 
+  constructor(public signupservice : SignupService,private router: Router) { 
 
   }
 
@@ -29,13 +34,33 @@ selected_value = null;
    
   }
 
+getf(dta:any)
+{
+  if(dta.target.value == "recruiter")
+  {
+    this.profile = true
+  }
+  else if(dta.target.value == "seeker")
+  {
+    this.profile = false
+  }
+  
+}
 
+relog()
+{
+  this.router.navigate(['/login'])
+}
 
   onClickSubmit(data:any) {
     console.log(data);
-    console.log(this.jobRecruiter);
+    this.signupservice.postsignup(data,this.prof).subscribe((res:any)=>
+    {
+      console.log(res);
+      
+    })
+
     
-    // alert("Entered Email id : " + data.emailid);
  }
 
 }

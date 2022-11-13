@@ -1,0 +1,81 @@
+<h2 style="text-align: center; color: rgb(98, 98, 98);">Hey Seeker ! Register Yourself !</h2>
+<div class="container">
+	
+	<div class="">
+		<div class="">
+
+			<form class="login" #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
+<div class="split left">
+	<div class="login__field">
+		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+		<input type="text" class="login__input" placeholder="First Name" name="fname" ngModel>
+	</div>
+
+	<div class="login__field">
+		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+		<input type="text" class="login__input" placeholder="Last Name" name="lname" ngModel>
+	</div>
+	
+	<div class="login__field">
+		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+		<input type="text" class="login__input" placeholder="Email" name="email" ngModel>
+	</div>
+
+	<div class="login__field">
+		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+		<input type="text" class="login__input" placeholder="userId" name="userid" ngModel>
+	</div>
+</div>
+<div class="split right">
+	<div class="login__field">
+		<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+		<input type="password" class="login__input" placeholder="Create Password" name="password" ngModel>
+	</div>
+
+	<div class="login__field">
+		<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+		<input type="date" class="login__input" placeholder="Date of birth" name="dob" ngModel>
+	</div>
+
+
+<div class="login__field">
+	<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+	<input type="number" class="login__input" placeholder="Contact No" name="contact" ngModel>
+</div>
+
+<div class="login__field">
+	<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+	<input type="text" class="login__input" placeholder="Address" name="address" ngModel>
+</div>
+
+</div>
+                
+
+				
+				<button class="button login__submit" type="submit" style="margin-top: 150px">
+					<span class="button__text">Signup</span>
+                    <!-- <input class="button__text" type="submit" value="submit"> -->
+					<i class="button__icon fas fa-chevron-right"></i>
+                    <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
+
+				</button>				
+			</form>
+                <div class="text_parent">
+                    <span class="text_child">
+                        Forgot Password ?
+                    </span>
+                    
+                    <span class="text_child">
+                        Alreadu a user ?
+                    </span>
+                </div>
+		</div>
+		<!-- <div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		 -->
+        
+	</div>
+</div>

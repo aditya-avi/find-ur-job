@@ -1,80 +1,90 @@
+<h2 style="text-align: center; color: rgb(98, 98, 98);">Hey Recruiter ! Register Yourself !</h2>
+
 <div class="container">
-	<div class="screen">
+	<div class="">
 		<div class="screen__content">
-            <span class="login_text">Signup</span>
 
 			<form class="login" #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
+                <div class="split left">
+
+                <div class="login__field">
+					<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+					<input type="text" class="login__input" placeholder="First Name" name="fname" ngModel>
+				</div>
+
+                <div class="login__field">
+					<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+					<input type="text" class="login__input" placeholder="Last Name" name="lname" ngModel>
+				</div>
 
 				<div class="login__field">
-					<fa-icon [icon]="usericon"></fa-icon>
+					<!-- <fa-icon [icon]="usericon"></fa-icon> -->
 					<input type="text" class="login__input" placeholder="Email" name="email" ngModel>
 				</div>
+
 				<div class="login__field">
-                    <fa-icon [icon]="passIcon"></fa-icon>
-					<input type="password" class="login__input" placeholder="Create Password" name="password" ngModel>
+					<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+					<input type="text" class="login__input" placeholder="userID" name="userid" ngModel>
 				</div>
 
 				<div class="login__field">
-                    <fa-icon [icon]="passIcon"></fa-icon>
+                    <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+					<input type="password" class="login__input" placeholder="Create Password" name="password" ngModel>
+				</div>
+</div>
+<div class="split right">
+
+				<div class="login__field">
+                    <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
 					<input type="date" class="login__input" placeholder="Date of birth" name="dob" ngModel>
 				</div>
 
-                <div class="">
-                    <div  class="login__field">
-                <label style="border: none;" class="login__input" for="isAccepted">Job Recruiter</label>
-                  <input [(ngModel)]="jobRecruiter" value="recruiter" type="radio" name="profile"/>
-                </div>
-                <div  class="login__field">
-                  <label style="border: none;" class="login__input" for="isAccepted">Job seeker</label>
-                  <input [(ngModel)]="jobRecruiter" type="radio" value="seeker" name="profile"/>
-                </div>
-                </div>
-
           
-            <div class="login__field" *ngIf="jobRecruiter" >
-                <fa-icon [icon]="passIcon"></fa-icon>
+            <div class="login__field" *ngIf="{profile}" >
+                <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
                 <input type="text" class="login__input" placeholder="Organisation Name" name="organisation" ngModel>
             </div>
 
-            <div class="login__field">
-                <fa-icon [icon]="passIcon"></fa-icon>
-                <input type="email" class="login__input" placeholder="Email" name="email" ngModel>
+            <div class="login__field" *ngIf="{profile}" >
+                <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+                <input type="text" class="login__input" placeholder="Organisation description" name="organisation_desc" ngModel>
             </div>
 
+
             <div class="login__field">
-                <fa-icon [icon]="passIcon"></fa-icon>
+                <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
                 <input type="number" class="login__input" placeholder="Contact No" name="contact" ngModel>
             </div>
 
             <div class="login__field">
-                <fa-icon [icon]="passIcon"></fa-icon>
+                <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
                 <input type="text" class="login__input" placeholder="Address" name="address" ngModel>
             </div>
+</div>
+<input type="submit" value="submit" style="margin-top: 150px">
+<!-- <button class="button login__submit" style="margin-top: 300px"> -->
+    <!-- <span class="button__text">Signup</span> -->
+    <!-- <input class="" type="submit" value="submit">
+    <i class="button__icon fas fa-chevron-right"></i>
+    <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
 
-				<button class="button login__submit">
-					<!-- <span class="button__text">Signup</span> -->
-                    <input class="button__text" type="submit" value="submit">
-					<i class="button__icon fas fa-chevron-right"></i>
-                    <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
-
-				</button>				
+</button>		 -->
 			</form>
                 <div class="text_parent">
                     <span class="text_child">
                         Forgot Password ?
                     </span>
                     
-                    <span class="text_child">
+                    <span class="text_child" (click)="relog()">
                         Alreadu a user ?
                     </span>
                 </div>
 		</div>
-		<div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
-		</div>		
+	
         
 	</div>
 </div>
+<br>
+    
+  
+  

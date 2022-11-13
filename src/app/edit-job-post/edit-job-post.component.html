@@ -1,0 +1,42 @@
+<div class="">
+    <form class="login" #jobpost = "ngForm" (ngSubmit) = "onClickSubmit(jobpost.value)" >
+    <div class="">
+        <label for="jobTitle"> Job Title</label>
+        <input type="text" name="jobTitle" id="" ngModel>
+    </div>
+
+    <div class="">
+        <label for="jobDescription">Job Description : </label>
+        <input type="text" name="jobDescription" id="" ngModel>
+    </div>
+
+    <div class="">
+        <label for="jobType">Job type : </label>
+        <input type="text" name="jobType" id="" ngModel>
+    </div>
+
+    <div class="">
+        <label for="jobLocation"> Job Location : </label>
+        <input type="text" name="jobLocation" id="" ngModel>
+    </div>
+
+    <div class="">
+        <label for="ctc">Annual CTC (LPA) : </label>
+        <input type="number" name="ctc" id="" ngModel>
+    </div>
+
+    <div class="">
+        <label for="sph">Salary per Hour : </label>
+        <input type="number" name="sph" id="" ngModel>
+    </div>
+
+    <div class="">
+        <label for="skills">Skills Required : </label>
+        <input type="text" name="skills" id="" ngModel>
+    </div>
+    <div class="">
+        <input type="submit" value="Save">
+    </div>
+
+</form>
+</div>

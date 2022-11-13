@@ -1,12 +1,13 @@
-<div class="">
+<div class="" *ngFor="let c of resp.companyjobsAndDetailsList;let i = index" [attr.data-index]="i">
 
-    <div class="card">
-        <h1>Job title</h1>
-        <h4> Req skills </h4>
-        <p class="price">ctc</p>
-        <p>Job description</p>
-        <p>Company name</p>
+    <div class="card" style="background-image: url({{bgimgdata[i].url}})">
+        <h1>{{c.jobTitle}}</h1>
+        <h4> {{c.companyJobDetailsEntity.skillsRequired}} </h4>
+        <p class="price">{{c.companyJobDetailsEntity.ctcOffered}}</p>
+        <p>{{c.jobDescription}}</p>
+        <p>Company name{{i}}</p>
         <p>Posted By</p>
+        <p>{{c.companyJobDetailsEntity.endDate.toString()}}</p>
 
         <p><button (click)="jobdetail()">Apply Now</button></p>
     </div>

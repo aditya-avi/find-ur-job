@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import {LoginService} from '../service/login.service'
+import { ToastrService } from 'ngx-toastr';
+import { NotificationService } from '../notification.service'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import {Router} from "@angular/router"
+
+
+
 
 
 @Component({
@@ -16,8 +23,19 @@ export class LoginComponent implements OnInit {
   password : any;
 
 
-  constructor(public loginservice : LoginService) { }
-
+  constructor(public loginservice : LoginService,private toastr: ToastrService,private toast : NotificationService,private router: Router) { }
+  Toast :any= Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: true,
+    timer: 3000000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
   getemail(email:any)
   {
     console.log(email.target.value);
@@ -39,10 +57,27 @@ export class LoginComponent implements OnInit {
     
     this.loginservice.postlogin(this.email,this.password).subscribe((res:any)=>
     {
-      if(res)
+      if(res  &&  res.validationErrors == null && res.success == true)
       {
         console.log(res);
-
+        // this.toast.showSuccess("Data shown successfully !!", "ItSolutionStuff.com")
+        // Swal.fire('Logged In!','success');
+        this.Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully'
+        })
+        localStorage.setItem('token',this.email)
+        this.router.navigate(['/candhome'])
+        .then(()=>
+        {
+          setTimeout(() => {
+            window.location.reload()
+        }, 2500);
+        })
+      }
+      else if(res.success == null || res.message == null)
+      {
+        Swal.fire(res.validationErrors[0].errorDescription + ' &nbsp;!');
       }
     })
   }

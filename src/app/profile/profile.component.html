@@ -1,56 +1,196 @@
 <div class="">
 
-    <form class="login" #profile = "ngForm" (ngSubmit) = "submitf(profile.value)" >
+    <!-- <form class="login" #profile = "ngForm" (ngSubmit) = "submitf(profile.value)" > -->
+        <div class="">
 
-        <h3>educational details</h3>
-    <div class="">
+        <h3>general details</h3>
+
+    <!-- <div class="">
         <label for="resume">Resume : </label>
         <input type="file" name="" id="" placeholder="resume" ngModel>
-    </div>
+    </div> -->
 
     <div class="">
-        <label for="resume">Resume headline : </label>
-        <textarea name="" id="" cols="30" rows="10" placeholder="resume headline" ngModel name="headline" ngModel></textarea>
+        <label for="resume">Profile Summary : </label>
+        <textarea name="" id="" cols="30" rows="10" placeholder="resume headline" ngModel name="headline" ngModel (blur)="savereshead($event)"></textarea>
     </div>
 
     <div class="">
         <label for="resume" class=""> Key skills : </label>
-        <input type="text" class="login_field" name="key_skills" id="" placeholder="key skills" ngModel>
+        <input type="text" class="login_field" name="key_skills" id="" placeholder="key skills" ngModel (blur)="saveskills($event)">
     </div>
 
     <div class="">
         <label for="resume">DOB : </label>
-        <input type="date" name="" id="" placeholder="DOB" ngModel>
+        <input type="date" name="" id="" placeholder="DOB" ngModel (blur)="savedob($event)">
     </div>
 
-<h3>educational details</h3>
     <div class="">
+        <label for="">Marital status</label>
+        <select name="" id="" (change)="marchange($event)">
+            <option value="" >Select marital status</option>
+            <option value="married" name="married">Married</option>
+            <option value="unmarried" name = "unmarried">unmarried</option>
+            <option value="other" name="others">others</option>
+        </select>
+    </div>
+
+    <div class="">
+        <label for="">Gender</label>
+        <select name="" id="" (change)="genderselect($event)">
+            <option value="" >Select gender</option>
+            <option value="male" name="male">Male</option>
+            <option value="female" name = "female">Female</option>
+            <option value="other" name="others">Better Not Reveal</option>
+        </select>
+    </div>
+
+    <div class="">
+        <label for="address">address</label>
+        <input type="text" name="address" id="" ngModel (blur)="saveaddress($event)">
+    </div>
+
+    <div class="">
+        <label for="PIN">PIN</label>
+        <input type="text" name="PIN" id="" ngModel (blur)="savepin($event)">
+    </div>
+
+    <div class="">
+        <label for="HomeTown">HomeTown</label>
+        <input type="text" name="HomeTown" id="" ngModel (blur)="savehometown($event)">
+    </div>
+
+    <div class="">
+        <button (click)="savekeyskills()">SAVE</button>
+    </div>
+</div>
+
+<div class="">
+<h2>educational details</h2>
+<br>
+
+<div class="">
+    <label for="">Select Degree</label>
+    <select name="" id="" (change)="degreeselect($event)">
+        <option value="" >Select Degree</option>
+        <option *ngFor="let c of degrees" value="{{c.id}}" >{{c.name}}</option>
+    </select>
+</div>
+
+<div class="" *ngIf="flagshow">
+    <form class="login" #degreevalue = "ngForm" (ngSubmit) = "savedegree(degreevalue.value)" >
+
+    <input type="text" name="marks" id="" placeholder="degree marks" ngModel>
+    <input type="text" name="college_name" id="" placeholder="college Name" ngModel>
+    <br>
+    <label for="st_year">Starting Date</label>
+    <input type="date" name="st_year" id="" placeholder="Starting Year" ngModel>
+    <br>
+    <label for="ed_year">Ending Date</label>
+    <input type="date" name="ed_year" id="" placeholder="Ending Year" ngModel>
+    <br>
+    <label for="ishigh">Highest Degree ?</label>
+    <select name="ishigh" id="" ngModel>
+        <option value="">Is Highest</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+    <br>
+    <input type="submit" value="save">
+
+    </form>
+</div>
+
+    <!-- <div class="">
         <label for="resume">SSC : </label>
-        <input type="text" name="SSC" id="" placeholder="education" ngModel>
+        <input type="text" name="SSC" id="" placeholder="SSC Marks" ngModel>
     </div>
 
     <div class="">
         <label for="resume">HSC : </label>
-        <input type="text" name="HSC" id="" placeholder="education" ngModel>
+        <input type="text" name="HSC" id="" placeholder="HSC Marks" ngModel>
     </div>
 
     <div class="">
         <label for="resume">Graduation : </label>
-        <input type="text" name="graduation" id="" placeholder="education" ngModel>
+        <input type="text" name="graduation" id="" placeholder="Graduation Marks" ngModel>
     </div>
 
     <div class="">
         <label for="resume">Projects : </label>
         <input type="text" name="projects" id="" placeholder="projects" ngModel (blur)="getp($event)">
-    </div>
+    </div> -->
 
     
     <div class="">
-        <input type="submit" value="submit">
+        <!-- <input type="submit" value="submit"> -->
+    </div>
+</div>
+
+<div class="">
+    <h1>Employment History</h1>
+   
+    <div class="" style="padding:200px">
+        <div class="">
+            <label for="">Company Name : </label>
+            <input [(ngModel)]="value5" type="text" name="company_name" id="" placeholder="Company Name" (blur)="getcompname($event)">
+        </div>
+
+        <div class="">
+            <label for="">Designation : </label>
+            <input [(ngModel)]="value6" type="text" name="designation" id="" placeholder="Designation" (blur)="getcompdesig($event)">
+        </div>
+
+         <div class="">
+            <label for="">End Date : (if Ended)</label>
+            <input [(ngModel)]="value7" type="date" name="ced" id="" placeholder="End Date" (blur)="getcomped($event)">
+        </div>
+        <h2>Project Details</h2>
+        <!-- proj div start -->
+
+        <div class="" *ngIf="projshow">
+        <div class="">
+            <label for="proj_name">
+                Project Name
+            </label>
+            <input [(ngModel)]="value1" type="text" name="proj_name" id="" placeholder="Project Name" (blur)="savepname($event)" ngModel>
+        </div>
+        
+        <div class="">
+            <label for="proj_desc">
+                Project Description
+            </label>
+            <input [(ngModel)]="value2" type="text" name="proj_desc" id="" placeholder="Project Description" (blur)="savepdesc($event)" ngModel>
+        </div>
+
+        <div class="">
+            <label for="proj_start_date">
+                Project Start Date
+            </label>
+            <input [(ngModel)]="value3" type="date" name="proj_start_date" id="" placeholder="Project start Date" (blur)="savepsd($event)" ngModel>
+        </div>
+
+        <div class="">
+            <label for="proj_end_date">
+                Project End Date
+            </label>
+            <input [(ngModel)]="value4" type="date" name="proj_end_date" id="" placeholder="Project End Date" (blur)="saveped($event)" ngModel>
+        </div>
+        <div class="">
+            <input type="submit" value="save Project" name="" id="" (click)="saveproj()">
+        </div>
     </div>
 
-    <div class=""></div>
-    </form>
+    <!-- proj div end -->
+        <div class="">
+            <!-- <input type="submit" value="Add More Projects" name="" id="" (click)="addproj()" > -->
+        </div>
+        <input [disabled]="hidebutton" type="submit" value="Save Employment Details" (click)="savecompdetails()">
+        <input type="submit" value="Add Employment Details">
+
+    </div>
+</div>
+    <!-- </form> -->
 
 
 </div>
