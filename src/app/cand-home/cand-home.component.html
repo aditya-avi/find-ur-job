@@ -1,6 +1,23 @@
 <div class="" *ngFor="let c of resp.companyjobsAndDetailsList;let i = index" [attr.data-index]="i">
 
     <div class="card" style="background-image: url({{bgimgdata[i].url}})">
+
+        <h2 style="border-bottom: 1px solid silver;">Java Developer</h2>
+        <p style="font-size: 16px;">Skills Required : Java ,Maven, SpringBoot </p>
+        <p class="price">CTC : 6 LPA</p>
+        <p>You will be responsible for developing the backend of Enterprice application based on java and its dependency tools.</p>
+        <p>Company Name :Walmart</p>
+        <p>Posted By : Priyanka</p>
+        <p>Posted Date : 3rd November 2021</p>
+
+        <p><button (click)="jobdetail()">Apply Now</button></p>
+    </div>
+
+</div>
+<!-- <div class="" *ngFor="let c of resp.companyjobsAndDetailsList;let i = index" [attr.data-index]="i">
+
+    <div class="card" style="background-image: url({{bgimgdata[i].url}})">
+
         <h1>{{c.jobTitle}}</h1>
         <h4> {{c.companyJobDetailsEntity.skillsRequired}} </h4>
         <p class="price">{{c.companyJobDetailsEntity.ctcOffered}}</p>
@@ -12,4 +29,4 @@
         <p><button (click)="jobdetail()">Apply Now</button></p>
     </div>
 
-</div>
+</div> -->

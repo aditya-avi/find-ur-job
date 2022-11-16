@@ -23,6 +23,10 @@ selected_value = null;
   arrowIcon = faCircleChevronRight
   profile : any;
   prof:string="rec";
+  userid:any
+  email:any;
+  useriderr:boolean=false
+  emailerr:boolean=false
 
   constructor(public signupservice : SignupService,private router: Router) { 
 
@@ -34,6 +38,41 @@ selected_value = null;
    
   }
 
+  checkuserid(data)
+  {
+    this.signupservice.validateuserid(data.target.value).subscribe((res:any)=>
+    {
+      console.log(res);
+      if(res==null || res.success==null)
+      {
+        this.useriderr = true
+        console.log(res.validationErrors[0].errorDescription);
+      }
+      else
+      {
+        this.useriderr = false
+      }
+      
+    })
+  }
+
+  checkemail(data)
+  {
+    this.signupservice.validateuseremail(data.target.value).subscribe((res:any)=>
+    {
+      console.log(res);
+      if(res==null || res.success==null)
+      {
+        this.emailerr = true
+        console.log(res.validationErrors[0].errorDescription);
+      }
+      else
+      {
+        this.emailerr = false
+      }
+      
+    })
+  }
 getf(dta:any)
 {
   if(dta.target.value == "recruiter")

@@ -13,7 +13,7 @@
                     <fa-icon [icon]="passIcon"></fa-icon>
 					<input type="password" class="login__input" placeholder="Password" (blur)="getpass($event)">
 				</div>
-				<button class="button login__submit" (click)="clicklogin()">
+				<button [disabled]="logindata" class="button login__submit" (click)="clicklogin()" >
 					<span class="button__text">Log In</span>
 					<i class="button__icon fas fa-chevron-right"></i>
                     <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>

@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   arrowIcon = faCircleChevronRight
   email:any;
   password : any;
+  logindata : boolean = true
 
 
   constructor(public loginservice : LoginService,private toastr: ToastrService,private toast : NotificationService,private router: Router) { }
@@ -50,6 +51,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.email);
+    
+    if(this.email!=undefined && this.password!=undefined)
+    {
+      this.logindata = false
+    }
   }
   clicklogin()
   {
@@ -67,13 +74,28 @@ export class LoginComponent implements OnInit {
           title: 'Signed in successfully'
         })
         localStorage.setItem('token',this.email)
-        this.router.navigate(['/candhome'])
+        localStorage.setItem('user',res.userType)
+        if(res.userType == "JOB_SEEKER")
+        {
+          this.router.navigate(['/candhome'])
         .then(()=>
         {
           setTimeout(() => {
             window.location.reload()
         }, 2500);
         })
+        }
+        else
+        {
+          this.router.navigate(['/rechome'])
+        .then(()=>
+        {
+          setTimeout(() => {
+            window.location.reload()
+        }, 2500);
+        })
+        }
+        
       }
       else if(res.success == null || res.message == null)
       {

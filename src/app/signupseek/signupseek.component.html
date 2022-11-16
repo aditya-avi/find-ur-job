@@ -8,6 +8,13 @@
 <div class="split left">
 	<div class="login__field">
 		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+		<input type="text" class="login__input" placeholder="userId" name="userid" ngModel   (blur)="checkuserid($event)">
+		<p *ngIf="useriderr" style="color: red;">UserId already Exists !</p>
+
+	</div>
+	
+	<div class="login__field">
+		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
 		<input type="text" class="login__input" placeholder="First Name" name="fname" ngModel>
 	</div>
 
@@ -18,18 +25,17 @@
 	
 	<div class="login__field">
 		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
-		<input type="text" class="login__input" placeholder="Email" name="email" ngModel>
+		<input type="text" class="login__input" placeholder="Email" name="email" ngModel (blur)="checkemail($event)">
+		<p *ngIf="emailerr" style="color: red;">Mail already Exists !</p>
+
 	</div>
 
-	<div class="login__field">
-		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
-		<input type="text" class="login__input" placeholder="userId" name="userid" ngModel>
-	</div>
+	
 </div>
 <div class="split right">
 	<div class="login__field">
 		<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-		<input type="password" class="login__input" placeholder="Create Password" name="password" ngModel>
+		<input required type="password" class="login__input" placeholder="Create Password" name="password" ngModel>
 	</div>
 
 	<div class="login__field">
@@ -48,19 +54,24 @@
 	<input type="text" class="login__input" placeholder="Address" name="address" ngModel>
 </div>
 
+<div class="" style="max-width: 150px;"><button class="login__submit" type="submit">Signup
+	<fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
+
+</button></div>
+
 </div>
                 
 
 				
-				<button class="button login__submit" type="submit" style="margin-top: 150px">
-					<span class="button__text">Signup</span>
+				<!-- <button class="button login__submit" type="submit" style="margin-top: 150px"> -->
+					<!-- <span class="button__text">Signup</span> -->
                     <!-- <input class="button__text" type="submit" value="submit"> -->
-					<i class="button__icon fas fa-chevron-right"></i>
-                    <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
+					<!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
 
-				</button>				
+				<!-- </button>				 -->
 			</form>
-                <div class="text_parent">
+                <!-- <div class="text_parent">
                     <span class="text_child">
                         Forgot Password ?
                     </span>
@@ -68,7 +79,7 @@
                     <span class="text_child">
                         Alreadu a user ?
                     </span>
-                </div>
+                </div> -->
 		</div>
 		<!-- <div class="screen__background">
 			<span class="screen__background__shape screen__background__shape4"></span>

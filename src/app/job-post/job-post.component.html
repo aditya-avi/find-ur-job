@@ -1,6 +1,6 @@
 <div class="container">
     <div class="screen__content">
-    <form class="login" #jobpost = "ngForm" (ngSubmit) = "onClickSubmit(jobpost.value)" >
+    <form class="login" #jobpost = "ngForm" (ngSubmit) = "onClickSubmit(jobpost.value)" style="max-height:fit-content">
         <div class="left split">
             <div class="" class="login__field">
                 <!-- <label for="jobTitle"> Job Title</label> -->
@@ -39,22 +39,21 @@
                 <span style="border: 1px solid;cursor: pointer;" (click)="saveskill()">Add</span>
             </div>
             <div class="chip" *ngFor="let c of skills;let i = index" style="display: inlie-flex;">
-                <img [name]={i} src="../../assets/cross.png" alt="Person" width="30" height="30" (click)="imgclick(c)">
+                <img [name]="c" src="../../assets/cross.png" alt="Person" width="30" height="30" (click)="imgclick($event)">
                 {{c}}
               </div>
+              <button class="button login__submit" style=" max-width: 150px; right: 10px;">
+                <span class="button__text">Post Job</span>
+                <!-- <input class="button__text" type="submit" value="submit"> -->
+                <i class="button__icon fas fa-chevron-right"></i>
+                <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
+    
+            </button>	
            
         </div>
-    
 
-   
     <div class="">
-        <button class="button login__submit" value="submit" type="submit" style="margin-top: 150px">
-            <!-- <span class="button__text">Signup</span> -->
-            <input class="button__text" type="submit" value="submit">
-            <i class="button__icon fas fa-chevron-right"></i>
-            <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
-
-        </button>			
+      		
         <!-- <input type="submit" value="Save"> -->
     </div>
 

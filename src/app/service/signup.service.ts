@@ -32,4 +32,15 @@ export class SignupService {
     "loginId":data.userid,
     "userType": pf})
   }
+  validateuserid(data:any)
+  {
+    console.log(data);
+    return this.http.get('http://localhost:8762/profile/validate/userid/'+data)
+  }
+
+  validateuseremail(data:any)
+  {
+    console.log(data);
+    return this.http.get('http://localhost:8762/profile/validate/email/'+data)
+  }
 }

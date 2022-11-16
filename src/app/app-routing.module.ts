@@ -7,6 +7,10 @@ import { JobPostComponent } from './job-post/job-post.component';
 import { CandHomeComponent } from './cand-home/cand-home.component'
 import { ProfileSelectComponent } from './profile-select/profile-select.component'
 import { SignupseekComponent } from './signupseek/signupseek.component'
+import {RecHomeComponent} from './rec-home/rec-home.component'
+import {ProfileseekComponent} from './profileseek/profileseek.component'
+import {RecprofileComponent} from './recprofile/recprofile.component'
+import { ViewjobComponent } from './viewjob/viewjob.component'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -15,9 +19,14 @@ const routes: Routes = [
   { path: 'profile', component:  ProfileComponent},
   { path: 'jobpost', component:  JobPostComponent},
   { path: 'candhome', component:  CandHomeComponent},
+  // { path: 'rechome', component:  RecHomeComponent},
   { path: 'candhome',     loadChildren: () => import('./cand-home/cand-home.component').then(m => m.CandHomeComponent)},
   { path: 'selectprofile', component:  ProfileSelectComponent},
   { path: 'seekersignup', component:  SignupseekComponent},
+  { path: 'seekprofile', component:  ProfileseekComponent},
+  { path: 'recprofile', component:  RecprofileComponent},
+  { path: 'viewjob', component:  ViewjobComponent},
+
 ];
 
 @NgModule({

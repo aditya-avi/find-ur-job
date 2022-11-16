@@ -1,6 +1,8 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import {ResumeService} from '../service/resume.service'
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -10,6 +12,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class ProfileComponent implements OnInit {
 
+  arrowIcon = faCircleChevronRight
 
   reshead:any;
   skills:any;
@@ -67,6 +70,21 @@ export class ProfileComponent implements OnInit {
   
   ngOnInit(): void {
     console.log(Date.now());
+
+    var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
     
   }
 

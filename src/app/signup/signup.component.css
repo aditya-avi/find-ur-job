@@ -128,7 +128,7 @@ body {
 	background: #fff;
 	font-size: 14px;
 	margin-top: 30px;
-	padding: 16px 20px;
+	padding: 5px 23px;
 	border-radius: 26px;
 	border: 1px solid #D4D3E8;
 	text-transform: uppercase;
@@ -191,12 +191,15 @@ body {
   .left {
 	left: 0;
 	margin-top: 80px;
-	margin-left: 70px;
+	/* margin-left: 70px; */
+	padding: 80px;
 	/* background-color: #111; */
   }
   
   .right {
 	margin-top: 80px;
+	padding: 80px;
+
 
 	right: 0;
 	/* background-color: red; */

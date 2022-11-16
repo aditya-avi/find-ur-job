@@ -16,6 +16,12 @@ export class SignupseekComponent implements OnInit {
    arrowIcon = faCircleChevronRight
    profile : any;
    prof:string="seek";
+   userid:any
+   useriderr:boolean=false
+   email:any;
+   emailerr:boolean=false
+
+
 
    
  
@@ -23,11 +29,46 @@ export class SignupseekComponent implements OnInit {
  
    }
  
- 
- 
    ngOnInit(): void {
     
    }
+
+   checkuserid(data)
+   {
+     this.signupservice.validateuserid(data.target.value).subscribe((res:any)=>
+     {
+       console.log(res);
+       if(res==null || res.success==null)
+       {
+         this.useriderr = true
+         console.log(res.validationErrors[0].errorDescription);
+       }
+       else
+       {
+         this.useriderr = false
+       }
+       
+     })
+   }
+
+   checkemail(data)
+   {
+     this.signupservice.validateuseremail(data.target.value).subscribe((res:any)=>
+     {
+       console.log(res);
+       if(res==null || res.success==null)
+       {
+         this.emailerr = true
+         console.log(res.validationErrors[0].errorDescription);
+       }
+       else
+       {
+         this.emailerr = false
+       }
+       
+     })
+   }
+
  
  getf(dta:any)
  {
@@ -49,9 +90,6 @@ export class SignupseekComponent implements OnInit {
        console.log(res);
        
      })
- 
-     
-     alert("Entered Email id : " + data.emailid);
-  }
+   }
 
 }

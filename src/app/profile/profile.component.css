@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
 
-* {
+/* * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;	
+	padding-top: 20px;
 	font-family: Raleway, sans-serif;
-}
+} */
+
 .fontset
 {
 	font-family: sans-serif;
@@ -17,9 +19,9 @@ body {
 
 .container {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;
+	/* align-items: stretch; */
+	justify-content: space-around;
+	/* min-height: 100vh; */
 }
 
 .screen {		
@@ -95,7 +97,7 @@ body {
 }
 
 .login__field {
-	padding: 20px 0px;	
+	padding: 7px 0px;	
 	position: relative;	
 }
 
@@ -127,7 +129,7 @@ body {
 	background: #fff;
 	font-size: 14px;
 	margin-top: 30px;
-	padding: 16px 20px;
+	padding: 7px 23px;
 	border-radius: 26px;
 	border: 1px solid #D4D3E8;
 	text-transform: uppercase;
@@ -173,3 +175,68 @@ body {
     font-size: 40px;
     padding-left: 110px;
 }
+
+
+
+
+.split {
+	height: 100%;
+	width: 50%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	overflow-x: hidden;
+	padding-top: 20px;
+  }
+  
+  .left {
+	left: 0;
+	margin-top: 80px;
+	margin-left: 70px;
+	/* background-color: #111; */
+  }
+  
+  .right {
+	margin-top: 80px;
+
+	right: 0;
+	/* background-color: red; */
+  }
+  
+  .centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+  }
+  
+  .centered img {
+	width: 150px;
+	border-radius: 50%;
+  }
+
+  /* collapsable css */
+
+  .collapsible {
+	background-color: #777;
+	color: white;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+	background-color: #555;
+  }
+  
+  .content {
+	padding: 0 18px;
+	display: none;
+	overflow: hidden;
+	background-color: #f1f1f1;
+  }

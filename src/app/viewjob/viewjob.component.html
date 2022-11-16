@@ -1,0 +1,52 @@
+<div class="grid-container2" style="padding: 10px; margin-left: 20px;">
+    <div class="grid-item2">
+        <div class="login__field ">
+            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Job Title :</label>
+            <input [disabled]="dis" value="Java Developer" name="Address" type="text" class="login__input" placeholder="User name / Email" style="max-width: 270px">
+        </div>
+        <div class="login__field">
+            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Job Description :</label>
+            <input [disabled]="dis" value="Java Job Description" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 220px">
+        </div>
+        <div class="login__field">
+            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Job Type :</label>
+            <input [disabled]="dis" value="Permanent" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+        </div>
+    </div>
+
+    <div class="grid-item2">
+        <div class="login__field ">
+            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">CTC :</label>
+            <input [disabled]="dis" value="6 LPA" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+        </div>
+        <div class="login__field">
+            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Salary Per Hour :</label>
+            <input [disabled]="dis" value="0" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+        </div>
+    </div>
+
+    <div class="grid-item2">
+        <div class="login__field ">
+            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Skills :</label>
+            <input [disabled]="dis" value="Java" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+        </div>
+        <div class="login__field">
+            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Job Location :</label>
+            <input [disabled]="dis" value="Germany" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+        </div>
+    </div>
+
+    <button class="button login__submit" (click)="editjob()">
+        <span class="button__text">Edit Job </span>
+        <i class="button__icon fas fa-chevron-right"></i>
+        <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
+
+    </button>		
+    <button [disabled]="dis" class="button login__submit" (click)="savejob()">
+        <span class="button__text">Save Job</span>
+        <i class="button__icon fas fa-chevron-right"></i>
+        <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
+
+    </button>		
+   
+</div>

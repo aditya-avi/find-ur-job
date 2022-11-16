@@ -19,9 +19,11 @@ value:string = ''
 
   addskill(data:any)
   {
-    console.log(data.target.value);
+    if(data && data.target.value !=null && data.target.value != '')
+    {
+      console.log(data.target.value);
     this.skills.push(data.target.value)
-    
+    }
   }
   saveskill()
   {
@@ -29,18 +31,31 @@ value:string = ''
   }
   onClickSubmit(data:any)
   {
+    console.log(data);
+    
     this.jobservice.postjob(data,this.skills).subscribe((res)=>{
       console.log(res);
       
     })
 
-    console.log(data);
+    console.log(data.target);
     
   }
 
   imgclick(data:any)
   {
-    console.log(data.target.value);
+    console.log(data.target.name);
+    let newArray = [];
+    for (let i = 0; i < this.skills.length; i++) {
+      if (this.skills[i] !== data.target.name) {
+        newArray.push(this.skills[i]);
+      }
+    }
+    console.log(newArray);
+    
+   this.skills = newArray
+
+    
     
   }
 

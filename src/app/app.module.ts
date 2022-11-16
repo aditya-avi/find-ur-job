@@ -16,6 +16,10 @@ import { ProfileSelectComponent } from './profile-select/profile-select.componen
 import { SignupseekComponent } from './signupseek/signupseek.component';
 import { EditJobPostComponent } from './edit-job-post/edit-job-post.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ProfileseekComponent } from './profileseek/profileseek.component';
+import { SeekprofileComponent } from './seekprofile/seekprofile.component';
+import { RecprofileComponent } from './recprofile/recprofile.component';
+import { ViewjobComponent } from './viewjob/viewjob.component';
 
 
 
@@ -31,6 +35,10 @@ import { ToastrModule } from 'ngx-toastr';
     ProfileSelectComponent,
     SignupseekComponent,
     EditJobPostComponent,
+    ProfileseekComponent,
+    SeekprofileComponent,
+    RecprofileComponent,
+    ViewjobComponent,
     
   ],
   imports: [
