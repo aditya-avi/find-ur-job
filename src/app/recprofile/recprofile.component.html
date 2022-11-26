@@ -24,7 +24,7 @@
   </div>
 <div class="" style="padding: 5px; margin-left: 200px; color: rgb(230, 230, 230);">
 <div class="" style="padding: 10px; background-color: #4A90E2;">
-    <h5 style="font-size: 18px">Name Name</h5>
+    <h5 style="font-size: 18px">{{eddetails.educationDetails[0].firstName}} {{eddetails.educationDetails[0].lastName}}</h5>
     <p>Comp Name</p>
     <div class="grid-container" >
     <div class="grid-item">
@@ -61,28 +61,52 @@
 </div>
 </div>
 
-<div class="grid-container2" style="padding: 10px; margin-left: 20px;">
-    <div class="grid-item2">
-        <div class="login__field ">
-            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Organisation Name :</label>
-            <input disabled value="name" name="Address" type="text" class="login__input" placeholder="User name / Email" style="max-width: 270px">
-        </div>
+<div >
+    <h2 style="color:grey">Educational Details</h2>
+<div class="" style="padding: 10px; margin-left: 20px;">
+    <div  class="tab">
+        <button *ngFor="let item of eddetails.educationDetails" class="tablinks" (click)="openCity($event, item.degree)">{{item.degree}}</button>
+      </div>
+      <div *ngFor="let item of eddetails.educationDetails" class="">
+      <div [id]="item.degree" class="tabcontent">
+        <h3>{{item.degree}}</h3>
+        <p>Degree Description : {{item.degreeDescription}}</p>
+        <p>Insttitution Name : {{item.institutionName}}</p>
+        <p> Major : {{item.major}}</p>
+        <p>Starting Date : {{item.startDate}}</p>
+        <p>Ending Date : {{item.endDate}}</p>
+        <p>Insttitution Address : {{item.address}}</p>
+        <p>Insttitution PinCode : {{item.pinCode}}</p>
+        <p>Institution Location : {{item.location}}</p>
+      </div>
+    </div>
+      
+      
+      
     
+</div>
+    <h2 style="color:grey">Employment History</h2>
+<div class="" style="padding: 10px; margin-left: 20px;">
+    <div  class="tab">
+        <button *ngFor="let item of emphistory.employmentDetails" class="tablinks" (click)="openCity($event, item.employer)">{{item.employer}}</button>
+      </div>
+      <div *ngFor="let item of emphistory.employmentDetails" class="">
+      <div [id]="item.employer" class="tabcontent">
+        <h3>{{item.degree}}</h3>
+        <p>Designation : {{item.designation}}</p>
+        <p>Insttitution Name : {{item.institutionName}}</p>
+        <p> Role : {{item.jobRole}}</p>
+        <p>Job Start Date : {{item.jobStartDate}}</p>
+        <p>Job End Date : {{item.jobEndDate}}</p>
+        <p>Project Name : {{item.projectName}}</p>
+      <p>Project Description : {{item.projectDescription}}</p>
+      <p>Project Start Date : {{item.projectStartDate}}</p>
+      <p>Project End Date : {{item.projectEndDate}}</p>
+      </div>
     </div>
-    <div class="grid-item2">
-        <div class="login__field ">
-            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Organisation Description :</label>
-            <input disabled value="name" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
-        </div>
-    </div>
-    <div class="grid-item2">
-        <div class="login__field">
-            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Profile Summary :</label>
-            <input disabled value="name" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
-        </div>
-
-    </div>
-
+      
+      
+      
     
 </div>
 
@@ -96,18 +120,19 @@
           <th>Location</th>
           <th>icons</th>
         </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>6 LPA</td>
-          <td> Germany </td>
-          <td> <button style="background-color: green; color:white; border-radius:10px; margin: 3px;">
+        <tr *ngFor="let c of jobs">
+          <td>{{c.jobTitle}}</td>
+          <td>{{c.jobDescription}}</td>
+          <td>{{c.companyJobDetailsEntity.ctcOffered}}</td>
+          <td> {{c.companyJobDetailsEntity.jobLocation}} </td>
+          <td> <button (click)="reviewjob(c)"   style="background-color: green; color:white; border-radius:10px; margin: 3px;">
+          <!-- <td> <button style="background-color: green; color:white; border-radius:10px; margin: 3px;"> -->
                 View
           </button>
            <button style="background-color: blue; color:white; border-radius:10px; margin: 3px;">
                 Edit
           </button>
-          <button style="background-color: red; color:white; border-radius:10px; margin: 3px;">
+          <button style="background-color: red; color:white; border-radius:10px; margin: 3px;" (click)="jobdelete(c.jobId)">
                 Delete
           </button>
         </td>

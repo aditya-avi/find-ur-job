@@ -96,6 +96,7 @@ relog()
     this.signupservice.postsignup(data,this.prof).subscribe((res:any)=>
     {
       console.log(res);
+      this.router.navigate(['/profile'])
       
     })
 

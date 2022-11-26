@@ -12,47 +12,38 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
   
-  .container {
-    padding: 2px 16px;
-  }
 
 
   /* grid css */
 
-  .grid-container {
+  .grid {
+    height: 100%;
     display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: #2851d8;
-    /* padding: 10px; */
-  }
-  .grid-item {
-    background-color: #4A90E2;
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
-    padding: 10px;
-    font-size: 13px;
-    text-align: center;
-  }
-  .grid-container2 {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    /* background-color: #2851d8; */
-    /* padding: 10px; */
-  }
-  .grid-item2 {
-    /* background-color: #4A90E2; */
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
-    /* padding: 20px; */
-    font-size: 16px;
-    /* text-align: center; */
-  }
+    grid-template-columns: repeat(2, minmax(150px, 2fr));
+    grid-template-rows: repeat(2, minmax(150px, 2fr));
+    /* border: blue 5px solid; */
+    margin: 50px;
+    margin-left: 220px;
+    /* background: linear-gradient(to right, rgba(161,140,209,0.5), rgba(251,194,235,0.5)) */
 
+  }
+  
+  .player {
+    margin: 10px;
+    padding-left: 30px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgba(161,140,209,0.5), rgba(251,194,235,0.5))
+
+  }
 
 
   /* side nav css starts here */
 
   .sidenav {
     height: 100%;
-    width: 200px;
+    width: 180px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -154,4 +145,30 @@
     border: 1px solid #ccc;
     border-top: none;
     color: black;
+  }
+
+
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
   }

@@ -1,0 +1,51 @@
+<div class="sidenav" style="margin-top: 52px;">
+    <div class="" style="margin: 5px;">
+    <a href="#about" class="card" style="border-radius: 30px; transform:rotate(355deg); border: 1px solid wheat;">
+        <span style="margin-left: 45px;">
+        <img src="../../assets/pin.png" alt="" style="max-width: 30px; margin-left: 10px;">
+    </span>
+        <br>
+        Don't Know How to Build a resume ? <br> Click Here !</a>
+    </div>
+    <div class="" style="margin: 5px;">
+    <a href="#services" class="card" style="border-radius: 30px; transform:rotate(4deg);">
+        <span style="margin-left: 45px;">
+            <img src="../../assets/pin.png" alt="" style="max-width: 30px; margin-left: 10px;">
+        </span>
+            <br>Want To Learn Soft Skills ? <br> Click Me !</a>
+            </div>
+            <div class="" style="margin: 5px;">
+    <a href="#clients" class="card" style="border-radius: 30px; transform:rotate(354deg);">
+        <span style="margin-left: 45px;">
+            <img src="../../assets/pin.png" alt="" style="max-width: 30px; margin-left: 10px;">
+        </span>
+            <br>Not Having Skills on Your Resume ? <br> Click Me !</a>
+            </div>
+  </div>
+
+  <div class="" style="margin-left: 200px; display: flex; justify-content: space-around;margin-top: 30px;">
+    <span class=""><img class="tooltip" src="../../assets/female.jpg" alt="">
+    <!-- <p>You Know </p> -->
+</span>
+    <span><img style="max-width: 130px; margin-right: 80px;" src="../../assets/male.jpg" alt="text"></span>
+  </div>
+
+  <div class="grid">
+    <div class="player"><h2>Top Job Searches</h2>
+    <p>{{tjs[r1].name}}, {{tjs[r2].name}}, {{tjs[r3].name}}, {{tjs[r4].name}}</p></div>
+    <div class="player"><h2>Top Jobs Applied</h2>
+        <p>{{tja[r1].name}}, {{tja[r2].name}}, {{tja[r3].name}}, {{tja[r4].name}}</p></div>
+    <div class="player"><h2>Top Skills in Demand</h2>
+        <p>{{tsin[r1].name}}, {{tsin[r2].name}}, {{tsin[r3].name}}, {{tsin[r4].name}}</p></div>
+    <div class="player"><h2>Top Jobs Posted</h2>
+        <p>{{tjp[r1].name}}, {{tjp[r2].name}}, {{tjp[r3].name}}, {{tjp[r4].name}}</p></div>
+  </div>
+  <h1 style="margin-left: 200px; border-bottom: 5px solid black;"><marquee>Current Jobs News</marquee></h1>
+
+  <div class="" *ngFor="let c of news;let i = index" [attr.data-index]="i" style="margin-left: 200px; padding: 10px;" >
+    <a target="_blank" style="font-weight: bolder; text-decoration: none; font-size: 20px; color: rgb(255 3 3); margin: 25px 0px 25px 0px;" [href]=c.url>{{i
+    +1}} : {{c.title}}</a>
+    
+    <!-- <p >{{c.title}}</p> -->
+  </div>
+  <div class="" style="padding-bottom: 50px"></div>

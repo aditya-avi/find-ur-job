@@ -54,4 +54,17 @@ saveemploymenthistory(compname,compdesig,comped,pdetails1)
     "startDate": "2022-11-10T05:18:00.583Z"
   }) 
 }
+
+geteducationdetails()
+{
+  return this.http.post('http://localhost:8082/resume/profileDetails/educationDetails/get',{"loginId": localStorage.getItem('token')})
+}
+getuseremploymenthistory()
+{
+  return this.http.post('http://localhost:8082/resume/profileDetails/employementHistory/get',{"loginId": localStorage.getItem('token')})
+}
+getuserfetails()
+{
+  return this.http.post('http://localhost:8082/resume/profileDetails/skills/get',{"loginId": localStorage.getItem('token')})
+}
 }

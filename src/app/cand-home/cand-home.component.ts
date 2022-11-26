@@ -103,9 +103,12 @@ export class CandHomeComponent implements OnInit {
       
     })
   }
-  jobdetail()
+  jobdetail(data)
   {
-
+    this.jobservice.applyjob(data).subscribe((res) =>
+    {
+      console.log(res);
+    })
   }
 
 }

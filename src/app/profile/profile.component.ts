@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
  pdetails = [
     {
       endDate: "",
-      loginI: localStorage.getItem('token'),
+      loginId: localStorage.getItem('token'),
       projectDescription: "",
       projectName: "",
       startDate: ""

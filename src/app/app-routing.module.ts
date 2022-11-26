@@ -11,6 +11,7 @@ import {RecHomeComponent} from './rec-home/rec-home.component'
 import {ProfileseekComponent} from './profileseek/profileseek.component'
 import {RecprofileComponent} from './recprofile/recprofile.component'
 import { ViewjobComponent } from './viewjob/viewjob.component'
+import {DashboardComponent} from './dashboard/dashboard.component'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'seekprofile', component:  ProfileseekComponent},
   { path: 'recprofile', component:  RecprofileComponent},
   { path: 'viewjob', component:  ViewjobComponent},
+  { path: 'dashboard', component:  DashboardComponent},
 
 ];
 

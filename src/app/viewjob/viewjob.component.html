@@ -2,37 +2,43 @@
     <div class="grid-item2">
         <div class="login__field ">
             <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Job Title :</label>
-            <input [disabled]="dis" value="Java Developer" name="Address" type="text" class="login__input" placeholder="User name / Email" style="max-width: 270px">
+            <input [disabled]="dis" [value]="JT" (blur)="chJT($event)" name="Address" type="text" class="login__input" placeholder="User name / Email" style="max-width: 270px">
         </div>
         <div class="login__field">
             <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Job Description :</label>
-            <input [disabled]="dis" value="Java Job Description" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 220px">
+            <input [disabled]="dis" [value]="jd" (blur)="chjd($event)" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 220px">
         </div>
         <div class="login__field">
             <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Job Type :</label>
-            <input [disabled]="dis" value="Permanent" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+            <input [disabled]="dis" [value]="JT" (blur)="chJT($event)" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+            <p style="color: red;"> *For Job type please refer the folloing chart  </p>
+            <p style="opacity: 0.6; color:red">1 : Permanent Full Time Oppourtunity</p>
+            <p style="opacity: 0.6; color:red">2 : Contractual Oppourtunity</p>
+            <p style="opacity: 0.6; color:red">3 : Intern Oppourtunity</p>
         </div>
     </div>
 
     <div class="grid-item2">
         <div class="login__field ">
             <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">CTC :</label>
-            <input [disabled]="dis" value="6 LPA" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+            <input [disabled]="dis" [value]="ctc" (blur)="chctc($event)" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
         </div>
         <div class="login__field">
             <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Salary Per Hour :</label>
-            <input [disabled]="dis" value="0" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+            <input [disabled]="dis" [value]="sph" (blur)="chsph($event)" name="email" type="text" class="login__input" placeholder="Salary Per Hour" style="max-width: 200px">
         </div>
     </div>
 
     <div class="grid-item2">
         <div class="login__field ">
-            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Skills :</label>
-            <input [disabled]="dis" value="Java" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Skills : {{skills}}
+            </label>
+            <br>
+            <!-- <input style="max-width: fit-content;" disabled [value]="skills" name="email" type="text" class="login__input" style="max-width: 200px"> -->
         </div>
-        <div class="login__field">
+        <div class="login__field" style="margin-top: 45px">
             <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Job Location :</label>
-            <input [disabled]="dis" value="Germany" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
+            <input [disabled]="dis" [value]="JL" (blur)="chJL($event)" name="email" type="text" class="login__input" placeholder="User name / Email" style="max-width: 200px">
         </div>
     </div>
 
@@ -48,5 +54,32 @@
         <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
 
     </button>		
-   
+
+    <div class="" style="margin: auto">
+        <table id="customers">
+            <tr>
+              <th>Email</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Mobile No.</th>
+              <th>Action</th>
+            </tr>
+            <tr *ngFor="let c of appjobs">
+              <td>{{c.email}}</td>
+              <td>{{c.firstName}}</td>
+              <td>{{c.lastName}}</td>
+              <td> {{c.mobileNumber}} </td>
+              <td> <button (click)="acceptjob(c)"   style="background-color: green; color:white; border-radius:10px; margin: 3px;">
+                      Accept
+                </button>
+                
+                <button style="background-color: red; color:white; border-radius:10px; margin: 3px;" (click)="rejectjob(c.jobId)">
+                      Reject
+                </button> </td>
+              
+            </tr>
+            
+          </table>
+    </div>
+      
 </div>

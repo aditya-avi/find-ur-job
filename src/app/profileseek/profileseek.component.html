@@ -62,7 +62,7 @@
 </div>
 
 
-<div class="grid-container2" style="padding: 10px; margin-left: 20px;">
+<!-- <div class="grid-container2" style="padding: 10px; margin-left: 20px;">
     <div class="grid-item2">
         <div class="login__field ">
             <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Address :</label>
@@ -108,5 +108,74 @@
         </div>
     </div>
    
+</div> -->
+
+<h2 style="color:grey">Educational Details</h2>
+<div class="" style="padding: 10px; margin-left: 20px;">
+    <div  class="tab">
+        <button *ngFor="let item of eddetails.educationDetails" class="tablinks" (click)="openCity($event, item.degree)">{{item.degree}}</button>
+      </div>
+      <div *ngFor="let item of eddetails.educationDetails" class="">
+      <div [id]="item.degree" class="tabcontent">
+        <h3>{{item.degree}}</h3>
+        <p>Degree Description : {{item.degreeDescription}}</p>
+        <p>Insttitution Name : {{item.institutionName}}</p>
+        <p> Major : {{item.major}}</p>
+        <p>Starting Date : {{item.startDate}}</p>
+        <p>Ending Date : {{item.endDate}}</p>
+        <p>Insttitution Address : {{item.address}}</p>
+        <p>Insttitution PinCode : {{item.pinCode}}</p>
+        <p>Institution Location : {{item.location}}</p>
+      </div>
+    </div>
+      
+      
+      
+    
+</div>
+    <h2 style="color:grey">Employment History</h2>
+<div class="" style="padding: 10px; margin-left: 20px;">
+    <div  class="tab">
+        <button *ngFor="let item of emphistory.employmentDetails" class="tablinks" (click)="openCity($event, item.employer)">{{item.employer}}</button>
+      </div>
+      <div *ngFor="let item of emphistory.employmentDetails" class="">
+      <div [id]="item.employer" class="tabcontent">
+        <h3>{{item.degree}}</h3>
+        <p>Designation : {{item.designation}}</p>
+        <p>Insttitution Name : {{item.institutionName}}</p>
+        <p> Role : {{item.jobRole}}</p>
+        <p>Job Start Date : {{item.jobStartDate}}</p>
+        <p>Job End Date : {{item.jobEndDate}}</p>
+        <p>Project Name : {{item.projectName}}</p>
+      <p>Project Description : {{item.projectDescription}}</p>
+      <p>Project Start Date : {{item.projectStartDate}}</p>
+      <p>Project End Date : {{item.projectEndDate}}</p>
+      </div>
+    </div>
+      
+      
+      
+    
+</div>
+
+<div class="" style="margin: auto">
+    <table id="customers">
+        <tr>
+          <th>Job Title</th>
+          <th>Description</th>
+          <th>Company Name</th>
+          <th>Company Description</th>
+          <th>Applied Date</th>
+        </tr>
+        <tr *ngFor="let c of jobsapplied">
+          <td>{{c.jobTitle}}</td>
+          <td>{{c.jobDescription}}</td>
+          <td>{{c.companyName}}</td>
+          <td> {{c.companyDescription}} </td>
+          <td> {{c.appliedDate}} </td>
+          
+        </tr>
+        
+      </table>
 </div>
   

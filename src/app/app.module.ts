@@ -20,6 +20,7 @@ import { ProfileseekComponent } from './profileseek/profileseek.component';
 import { SeekprofileComponent } from './seekprofile/seekprofile.component';
 import { RecprofileComponent } from './recprofile/recprofile.component';
 import { ViewjobComponent } from './viewjob/viewjob.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -39,6 +40,7 @@ import { ViewjobComponent } from './viewjob/viewjob.component';
     SeekprofileComponent,
     RecprofileComponent,
     ViewjobComponent,
+    DashboardComponent,
     
   ],
   imports: [

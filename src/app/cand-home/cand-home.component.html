@@ -1,4 +1,4 @@
-<div class="" *ngFor="let c of resp.companyjobsAndDetailsList;let i = index" [attr.data-index]="i">
+<!-- <div class="" *ngFor="let c of resp.companyjobsAndDetailsList;let i = index" [attr.data-index]="i">
 
     <div class="card" style="background-image: url({{bgimgdata[i].url}})">
 
@@ -13,8 +13,8 @@
         <p><button (click)="jobdetail()">Apply Now</button></p>
     </div>
 
-</div>
-<!-- <div class="" *ngFor="let c of resp.companyjobsAndDetailsList;let i = index" [attr.data-index]="i">
+</div> -->
+<div class="" *ngFor="let c of resp.companyjobsAndDetailsList;let i = index" [attr.data-index]="i">
 
     <div class="card" style="background-image: url({{bgimgdata[i].url}})">
 
@@ -26,7 +26,7 @@
         <p>Posted By</p>
         <p>{{c.companyJobDetailsEntity.endDate.toString()}}</p>
 
-        <p><button (click)="jobdetail()">Apply Now</button></p>
+        <p><button (click)="jobdetail(c.jobId)">Apply Now</button></p>
     </div>
 
-</div> -->
+</div>

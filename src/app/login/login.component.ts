@@ -64,6 +64,10 @@ export class LoginComponent implements OnInit {
     
     this.loginservice.postlogin(this.email,this.password).subscribe((res:any)=>
     {
+      console.log(`hit`);
+      
+      console.log(res);
+      
       if(res  &&  res.validationErrors == null && res.success == true)
       {
         console.log(res);
@@ -87,7 +91,7 @@ export class LoginComponent implements OnInit {
         }
         else
         {
-          this.router.navigate(['/rechome'])
+          this.router.navigate(['/recprofile'])
         .then(()=>
         {
           setTimeout(() => {

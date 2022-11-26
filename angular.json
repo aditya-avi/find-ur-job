@@ -24,11 +24,10 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/sweetalert2/src/sweetalert2.scss",  
-               "node_modules/materialize-css/dist/css/materialize.min.css"            ],
+              "node_modules/sweetalert2/src/sweetalert2.scss"
+                         ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/materialize-css/dist/js/materialize.min.js"
+              "node_modules/jquery/dist/jquery.min.js"
             ]
           },
           "configurations": {
@@ -101,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
