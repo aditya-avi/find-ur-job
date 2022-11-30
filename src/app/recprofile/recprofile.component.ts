@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { faLocationDot,faEnvelope,faPhone,faPersonHalfDress,faCakeCandles,faHomeUser } from '@fortawesome/free-solid-svg-icons';
 import {RecruiterService} from '../service/recruiter.service'
 import { Router } from '@angular/router';
+import {ResumeService} from '../service/resume.service'
+// import { ResumeService } from './../service/resume.service';
 
 @Component({
   selector: 'app-recprofile',
@@ -12,7 +14,7 @@ export class RecprofileComponent implements OnInit {
 
   jobs :any
 
-  constructor(public recruiterservice : RecruiterService,public router : Router) { }
+  constructor(public recruiterservice : RecruiterService,public router : Router, public resumeService : ResumeService) { }
 
   arrowIcon = faLocationDot
   emailicon = faEnvelope
@@ -193,7 +195,7 @@ export class RecprofileComponent implements OnInit {
     let id = localStorage.getItem('token')
     this.recruiterservice.getJobPostedByRec(id).subscribe((res:any)=>
     {
-      console.log(res.companyjobsAndDetailsList);
+      console.log(res);
       this.jobs = res.companyjobsAndDetailsList
     })
 
@@ -237,6 +239,16 @@ export class RecprofileComponent implements OnInit {
     )
 
     
+  }
+
+  downresume()
+  {
+    const id = localStorage.getItem('token')
+    this.resumeService.downresume(id).subscribe((res)=>
+    {
+      console.log(res);
+      
+    })
   }
 
 }

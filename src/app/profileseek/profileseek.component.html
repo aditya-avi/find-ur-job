@@ -30,36 +30,40 @@
     <div class="grid-item">
         <span>
             <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon" style="position: absolute;"></fa-icon>
-            <p style="display:inline; padding-left:3vh">Location</p>
+            <p style="display:inline; padding-left:3vh">{{basicd.address}}</p>
         </span>
     </div>
     <div class="grid-item">
         <span>
             <fa-icon class="button__icon fas fa-chevron-right" [icon]="emailicon" style="position: absolute;"></fa-icon>
-            <p style="display:inline; padding-left:3vh">Email</p>
+            <p style="display:inline; padding-left:3vh">{{basicd.email}}</p>
         </span>
     </div>
     <div class="grid-item"><span>
         <fa-icon class="button__icon fas fa-chevron-right" [icon]="phoneicon" style="position: absolute;"></fa-icon>
-        <p style="display:inline; padding-left:3vh">+91 0000000000</p>
+        <p style="display:inline; padding-left:3vh">{{basicd.mobileNumber}}</p>
     </span></div>  
     <div class="grid-item"><span>
         <fa-icon class="button__icon fas fa-chevron-right" [icon]="gendericon" style="position: absolute;"></fa-icon>
-        <p style="display:inline; padding-left:3vh">Gender</p>
+        <p style="display:inline; padding-left:3vh">{{basicd.gender}}</p>
     </span></div>
     <div class="grid-item"><span>
         <fa-icon class="button__icon fas fa-chevron-right" [icon]="dobicon" style="position: absolute;"></fa-icon>
-        <p style="display:inline; padding-left:3vh">DOB</p>
+        <p style="display:inline; padding-left:3vh">{{basicd.dateOfBirth}}</p>
     </span></div>
     <div class="grid-item"><span>
         <fa-icon class="button__icon fas fa-chevron-right" [icon]="hometownicon" style="position: absolute;"></fa-icon>
-        <p style="display:inline; padding-left:3vh">HomeTown</p>
+        <p style="display:inline; padding-left:3vh">{{basicd.homeTown}}</p>
     </span></div>  
 
  
   
 </div>
 </div>
+
+<button class="login__submit" (click)="downresume()">
+    Download Resume
+ </button>
 
 
 <!-- <div class="grid-container2" style="padding: 10px; margin-left: 20px;">

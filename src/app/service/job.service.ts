@@ -15,16 +15,14 @@ export class JobService {
     
     console.log(skills);
     
-    return this.http.post('http://localhost:8082/job/postJob/post',
+    return this.http.post('http://localhost:8083/job/postJob/post',
     {
-      "active": "yes",
+      "active": "Y",
       "ctcOffered": data.ctc,
-      "editJob": true,
       "jobDescription": data.jobDescription,
-      "jobId": 0,
       "jobLocation": data.jobLocation,
       "jobTitle": data.jobTitle,
-      "jobTypeId": data.jobType,
+      "jobTypeId": 1,
       "loginId": loginId,
       "salaryPerHour": 0,
       "skillsRequired":skills
@@ -33,7 +31,7 @@ export class JobService {
 
   getjobs()
   {
-    return this.http.get('http://localhost:8082/resume/allJobs/get')
+    return this.http.get('http://localhost:8083/job/allJobs/get')
   }
 
   applyjob(data)
@@ -75,6 +73,30 @@ export class JobService {
   seekersapp(id)
   {
     return this.http.get('http://localhost:8083/job/recruiterJobDetails/jobSeekerDetails/'+id)
+  }
+
+  acceptjob(jid)
+  {
+   return this.http.post('http://localhost:8083/job/recruiterJobDetails/acceptOrRejectJobApplication/',{
+      "applicationAccepted": "Y",
+      "applicationViewed": "string",
+      "jobApplicationId": 0,
+      "jobId": jid,
+      "jobSeekerId": 0,
+      "loginId": localStorage.getItem('token')
+    })
+  }
+
+  rejectjob(jid)
+  {
+   return this.http.post('http://localhost:8083/job/recruiterJobDetails/acceptOrRejectJobApplication/',{
+      "applicationAccepted": "N",
+      "applicationViewed": "string",
+      "jobApplicationId": 0,
+      "jobId": jid,
+      "jobSeekerId": 0,
+      "loginId": localStorage.getItem('token')
+    })
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import {JobService} from '../service/job.service'
+import {Router} from "@angular/router"
+
 
 @Component({
   selector: 'app-job-post',
@@ -12,7 +14,7 @@ skills : any =[]
 arrowIcon = faCircleChevronRight
 value:string = ''
 
-  constructor(public jobservice : JobService) { }
+  constructor(public jobservice : JobService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -35,6 +37,7 @@ value:string = ''
     
     this.jobservice.postjob(data,this.skills).subscribe((res)=>{
       console.log(res);
+      this.router.navigate(['/recprofile'])
       
     })
 

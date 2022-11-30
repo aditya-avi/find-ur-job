@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient,HttpHeaders} from '@angular/common/http'
 
 
 @Injectable({
@@ -9,29 +9,32 @@ export class ResumeService {
 
   constructor(private http: HttpClient) { }
 
-  saveskills(address:any,dob:any,gender:any,hometown:any,maritalstatus:any,pincode:any,psum:any,skills:any)
+  saveskills(address:any,dob:any,gender:any,hometown:any,maritalstatus:any,pincode:any,psum:any,skills:any,mstatus:any)
 {
+  const skill = skills.split(",");
+  // console.log(skill);
+  
   return this.http.post('http://localhost:8082/resume/addSkillsAndGeneralDetails/post',{
     "address": address,
     "dateOfBirth": dob,
     "gender": gender,
     "homeTown": hometown,
     "loginId": localStorage.getItem("token"),
-    "martialStatus": maritalstatus,
+    "martialStatus": mstatus,
     "pinCode": pincode,
     "profileSummary": psum,
-    "skills": skills
+    "skills": skill
   }) 
 }
 
-saveeducation(data:any,degreeId:any)
+saveeducation(data:any,degreeId:any,instid)
 {
-  return this.http.post('http://localhost:8082/resume/addSkillsAndGeneralDetails/post',{
+  return this.http.post('http://localhost:8082/resume/addUserEducationDetails/post',{
     
       "degreeId": degreeId,
       "endDate": data.ed_year,
-      "institutionId": 0,
-      "isHighest": "ishigh",
+      "institutionId": instid,
+      "isHighest": data.ishigh,
       "loginId": localStorage.getItem("token"),
       "major": data.marks,
       "startDate": data.st_year
@@ -66,5 +69,29 @@ getuseremploymenthistory()
 getuserfetails()
 {
   return this.http.post('http://localhost:8082/resume/profileDetails/skills/get',{"loginId": localStorage.getItem('token')})
+}
+
+resumeup(data)
+{
+  const id = localStorage.getItem('token')
+  // const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
+  // const headers= new HttpHeaders()
+// .set('Content-Type', 'multipart/form-data')
+const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
+
+ return this.http.post('http://localhost:8082/resume/uploadResume/'+id,{"type":data},{headers:headers})
+}
+
+downresume(id)
+{
+  const headers = new HttpHeaders({ 'Accept': 'application/pdf' });
+
+  return this.http.get('http://localhost:8082/resume/downloadResume/'+id)
+}
+
+getbasicdet()
+{
+  const id = localStorage.getItem('token')
+  return this.http.get('http://localhost:8083/job/recruiterBasicDetailsByLoginId/get/'+id)
 }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faLocationDot,faEnvelope,faPhone,faPersonHalfDress,faCakeCandles,faHomeUser } from '@fortawesome/free-solid-svg-icons';
 import {JobService} from '../service/job.service'
+import {ResumeService} from '../service/resume.service'
 
 @Component({
   selector: 'app-profileseek',
@@ -11,90 +12,8 @@ export class ProfileseekComponent implements OnInit {
 
   jobsapplied : any;
 
-  eddetails : any = {
-    "educationDetails": [
-      {
-        "address": "string",
-        "degree": "string1",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      },
-       {
-        "address": "string",
-        "degree": "string2",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      },
-       {
-        "address": "string",
-        "degree": "string3",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      },
-       {
-        "address": "string",
-        "degree": "string4",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      },
-       {
-        "address": "string",
-        "degree": "string5",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      }
-    ],
-    "message": "string",
-    "success": true,
-    "validationErrors": [
-      {
-        "errorCode": "string",
-        "errorDescription": "string",
-        "fieldName": "string",
-        "fieldValue": {}
-      }
-    ]
-  }
+  eddetails : any 
+
   emphistory : any = {
     "employmentDetails": [
       {
@@ -176,7 +95,7 @@ export class ProfileseekComponent implements OnInit {
     ]
   }
 
-  constructor(public jobservice : JobService) { }
+  constructor(public jobservice : JobService,public resumeservice : ResumeService) { }
 
   arrowIcon = faLocationDot
   emailicon = faEnvelope
@@ -185,11 +104,28 @@ export class ProfileseekComponent implements OnInit {
   dobicon = faCakeCandles
   hometownicon = faHomeUser
 
+  basicd :any;
+  edud : any;
+
   ngOnInit(): void {
     this.jobservice.jobapplied().subscribe((res : any)=>
     {
       console.log(res.jobsApplied[0].companyName);
       this.jobsapplied = res.jobsApplied
+      
+    })
+
+    this.resumeservice.getbasicdet().subscribe((res:any)=>
+    {
+      console.log(res);
+      this.basicd = res
+      
+    })
+
+    this.resumeservice.geteducationdetails().subscribe((res)=>
+    {
+      console.log(res);
+      this.eddetails = res
       
     })
   }
@@ -206,6 +142,18 @@ export class ProfileseekComponent implements OnInit {
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+  }
+
+  downresume()
+  {
+    // const id = localStorage.getItem('token')
+    console.log(this.basicd.userId);
+    
+    this.resumeservice.downresume(this.basicd.userId).subscribe((res)=>
+    {
+      console.log(res);
+      
+    })
   }
 
 

@@ -12,94 +12,19 @@ export class CandHomeComponent implements OnInit {
   
   data:any;
   bgimgdata:any;
-  resp:any = {
-    "companyjobsAndDetailsList": [
-      {
-        "active": "string",
-        "companyId": 0,
-        "companyJobDetailsEntity": {
-          "active": "string",
-          "ctcOffered": 0,
-          "endDate": "2022-11-12T15:43:45.208Z",
-          "jobCreationDate": "2022-11-12T15:43:45.208Z",
-          "jobDetailsId": 0,
-          "jobId": 0,
-          "jobLocation": "string",
-          "salaryPerHour": 0,
-          "skillsRequired": "string"
-        },
-        "jobDescription": "string",
-        "jobId": 0,
-        "jobTitle": "string",
-        "jobTypeId": 0
-      },
-      {
-        "active": "string",
-        "companyId": 0,
-        "companyJobDetailsEntity": {
-          "active": "string",
-          "ctcOffered": 0,
-          "endDate": "2022-11-12T15:43:45.208Z",
-          "jobCreationDate": "2022-11-12T15:43:45.208Z",
-          "jobDetailsId": 0,
-          "jobId": 0,
-          "jobLocation": "string",
-          "salaryPerHour": 0,
-          "skillsRequired": "string"
-        },
-        "jobDescription": "string",
-        "jobId": 0,
-        "jobTitle": "string",
-        "jobTypeId": 0
-      },
-      {
-        "active": "string",
-        "companyId": 0,
-        "companyJobDetailsEntity": {
-          "active": "string",
-          "ctcOffered": 0,
-          "endDate": "2022-11-12T15:43:45.208Z",
-          "jobCreationDate": "2022-11-12T15:43:45.208Z",
-          "jobDetailsId": 0,
-          "jobId": 0,
-          "jobLocation": "string",
-          "salaryPerHour": 0,
-          "skillsRequired": "string"
-        },
-        "jobDescription": "string",
-        "jobId": 0,
-        "jobTitle": "string",
-        "jobTypeId": 0
-      }
-    ],
-    "message": "string",
-    "success": true,
-    "validationErrors": [
-      {
-        "errorCode": "string",
-        "errorDescription": "string",
-        "fieldName": "string",
-        "fieldValue": {}
-      }
-    ]
-  }
+  resp:any 
 
   constructor(public jobservice : JobService,public utility : UtilityService) { }
-  ngOnInit(): void {
-    this.utility.getimg().subscribe((res)=>
-    {
-      console.log(res[0].url);
-      this.bgimgdata = res;
-      
-    })
+  ngOnInit() {
+    
     // window.location.reload()
     
-    console.log(this.resp.companyjobsAndDetailsList[0].companyJobDetailsEntity.skillsRequired);
+    // console.log(this.resp.companyjobsAndDetailsList[0].companyJobDetailsEntity.skillsRequired);
     
-    this.jobservice.getjobs().subscribe((res)=>
+    this.jobservice.getjobs().subscribe((res:any)=>
     {
-      console.log(res);
-      this.data = res
+      console.log(res.companyjobsAndDetailsList);
+      this.data = res.companyjobsAndDetailsList
       
     })
   }

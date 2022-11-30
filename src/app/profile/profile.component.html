@@ -1,6 +1,8 @@
 <h1 style="margin-left: 35%; margin-top:10px">Please Fill Your Details</h1>
     <div class="" style="padding: 30px">
-    <button type="button" class="collapsible">Open General Details</button>
+                <!-- <h3 >Done</h3> -->
+
+    <button type="button" class="collapsible">General Details <span *ngIf="gend" style="margin-left: 102vh;">Done</span></button>
 
     <div class="content " style="border-right: 1px solid grey;">
 
@@ -10,6 +12,16 @@
         <label for="resume">Resume : </label>
         <input type="file" name="" id="" placeholder="resume" ngModel>
     </div> -->
+    
+    <div class="login__field">
+        
+        <input class="form-control" type="file" 
+        (change)="onChange($event)">
+
+    <button style="margin-left: 500px" (click)="uploadresume()" 
+    class="btn btn-success">
+    Upload
+</button></div>
 
     <div class="login__field">
         <!-- <label for="resume">Profile Summary : </label> -->
@@ -72,7 +84,7 @@
         </button>
 </div>
 </div>
-<button type="button" class="collapsible">Open Educational Details</button>
+<button type="button" class="collapsible" >Open Educational Details <span *ngIf="savdeg" style="margin-left: 102vh;">Done</span></button>
 
 <div class="content" style="border-right: 1px solid grey;">
 <h2>educational details</h2>
@@ -93,7 +105,11 @@
     </div>
 
     <div class="login__field">
-        <input class="login__input" type="text" name="college_name" id="" placeholder="college Name" ngModel>
+        <!-- <input class="login__input" type="text" name="college_name" id="" placeholder="college Name" ngModel> -->
+        <select name="" id="" (change)="instituteselect($event)" class="login__input">
+            <option value="" >Select Institute</option>
+            <option *ngFor="let c of institution" value="{{c.id}}" >{{c.name}}</option>
+        </select>
 
     </div>
 
@@ -111,8 +127,8 @@
         <label for="ishigh">Highest Degree ?</label>
         <select class="login__input" name="ishigh" id="" ngModel>
             <option value="">Is Highest</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value="Y">Yes</option>
+            <option value="N">No</option>
         </select>
     </div>
   
@@ -206,7 +222,7 @@
             <!-- <input type="submit" value="Add More Projects" name="" id="" (click)="addproj()" > -->
         </div>
         <input [disabled]="hidebutton" type="submit" value="Save Employment Details" (click)="savecompdetails()">
-        <input type="submit" value="Add Employment Details">
+        <!-- <input type="submit" value="Add Employment Details"> -->
 
     </div>
 </div>

@@ -42,6 +42,5 @@ margin: auto;
     /* background-image: "https://picsum.photos/300/300/?blur"; */
     opacity: 1;
     height: 100%;
-    background-image: url("https://picsum.photos/300/300/?blur");
     background-size: cover;
   }

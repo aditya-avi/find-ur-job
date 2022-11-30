@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
   compname:any;
   compdesig:any;
   comped:any;
+  instid:any;
   hidebutton:boolean = true;
   value1:string = ''
   value2:string = ''
@@ -37,6 +38,9 @@ export class ProfileComponent implements OnInit {
   value5:string= ''
   value6:string= ''
   value7:string= ''
+  file : any;
+
+  maritals :any;
 
 
 
@@ -47,7 +51,15 @@ export class ProfileComponent implements OnInit {
     {id: 4, name: "Post Graduation"},
     {id: 5, name: "Others"}
  ];
- pdetails = [
+
+ institution = [
+  {id: 1, name: "Giet"},
+  {id: 2, name: "IIT delhi"},
+  {id: 3, name: "NIT Delhi"},
+  {id: 4, name: "BIT meshra"},
+  {id: 5, name: "BITS Pilani"}
+];
+ pdetails = 
     {
       endDate: "",
       loginId: localStorage.getItem('token'),
@@ -55,7 +67,7 @@ export class ProfileComponent implements OnInit {
       projectName: "",
       startDate: ""
     }
- ];
+ ;
 
   pdetails1 : any = [];
 
@@ -85,6 +97,8 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+
+
     
   }
 
@@ -123,6 +137,7 @@ this.mstatus = data.target.value
   }
   marchange(data:any)
   {
+    this.maritals = data.target.value;
     console.log(data.target.value);
     
   }
@@ -132,14 +147,17 @@ this.mstatus = data.target.value
     this.gender = data.target.value
     
   }
-
+gend :any = false
   savekeyskills()
   {
     
-    this.resumeservice.saveskills(this.address,this.dob,this.gender,this.hometown,this.mstatus,this.pin,this.reshead,this.skills).subscribe((res)=>
+    this.resumeservice.saveskills(this.address,this.dob,this.gender,this.hometown,this.mstatus,this.pin,this.reshead,this.skills,this.maritals).subscribe((res)=>
     {
       
       console.log(res);
+      this.gend = true
+      console.log(this.gend);
+      
       
     })
     // savekeyskills(address:any,dob:any,gender:any,hometown:any,mstatus:any,pin:any,reshead:any,skills:any)
@@ -154,14 +172,19 @@ this.mstatus = data.target.value
       if(value.id==data.target.value) this.degrees.splice(index,1);
   });
   }
-
+  instituteselect(data :any)
+  {
+    this.instid = data.target.value
+  }
+savdeg : any = false
   savedegree(data:any)
   {
     this.flagshow = false
     console.log(data);
-    this.resumeservice.saveeducation(data,this.selectedDeg).subscribe((res :any)=>
+    this.resumeservice.saveeducation(data,this.selectedDeg,this.instid).subscribe((res :any)=>
     {
       console.log(res);
+      this.savdeg = true
       // if(res.message!= null && res.success!= null)
       // {
       // }
@@ -188,32 +211,32 @@ this.mstatus = data.target.value
   {
     if(data)
     {
-      this.pdetails[0].endDate = data.target.value
+      this.pdetails.endDate = data.target.value
     }
   }
 
   savepsd(data:any)
   {
-    this.pdetails[0].startDate = data.target.value
+    this.pdetails.startDate = data.target.value
   }
 
   savepdesc(data:any)
   {
-    this.pdetails[0].projectDescription = data.target.value
+    this.pdetails.projectDescription = data.target.value
 
   }
 
   savepname(data:any)
   {
-    this.pdetails[0].projectName = data.target.value
+    this.pdetails.projectName = data.target.value
 
   }
 
   saveproj()
   {
 this.hidebutton = false   
-    this.pdetails1.push(this.pdetails)
-    console.log(this.pdetails);
+    this.pdetails1.push(this.pdetails )
+        console.log(this.pdetails);
     console.log(this.pdetails1);
     this.value1=''
     this.value2=''
@@ -234,6 +257,21 @@ this.hidebutton = false
   addproj()
   {
     this.clearfield = true
+    
+  }
+  onChange(event) {
+    this.file = event.target.files[0];
+  }
+
+  uploadresume()
+  {
+    console.log(this.file);
+    
+    this.resumeservice.resumeup(this.file).subscribe((res:any)=>
+    {
+      console.log(res);
+      
+    })
     
   }
 }

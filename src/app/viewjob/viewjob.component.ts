@@ -158,14 +158,24 @@ export class ViewjobComponent implements OnInit {
       
     }
 
-acceptjob(data)
+acceptjob()
 {
+ this.jobservice.acceptjob(this.name.data.jobid).subscribe((res)=>
+ {
+  console.log(res);
+  
+ })
 
+ 
 }
 
-rejectjob(data)
+rejectjob()
 {
-  
+  this.jobservice.rejectjob(this.name.data.jobId).subscribe((res)=>
+  {
+    console.log(res);
+    
+  })
 }
   
 

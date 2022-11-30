@@ -96,6 +96,12 @@ relog()
     this.signupservice.postsignup(data,this.prof).subscribe((res:any)=>
     {
       console.log(res);
+      
+      const id = res.message.split(" ")[1]
+      console.log(id);
+      localStorage.setItem('token',id)
+      
+      console.log(res);
       this.router.navigate(['/profile'])
       
     })

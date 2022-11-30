@@ -33,6 +33,14 @@ const headers= new HttpHeaders()
   {params:queryParams, headers: headers })
   }
   
+getdegree()
+{
+  this.http.get('http://localhost:8083/ui/getAllDegree/get')
+}
 
+getinst()
+{
+  this.http.get('http://localhost:8083/ui/getAllInstitution/get')
+}
  
 }

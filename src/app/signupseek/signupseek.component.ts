@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormControl } from '@angular/forms';
 import {SignupService} from '../service/signup.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signupseek',
   templateUrl: './signupseek.component.html',
@@ -25,7 +26,7 @@ export class SignupseekComponent implements OnInit {
 
    
  
-   constructor(public signupservice : SignupService) { 
+   constructor(public signupservice : SignupService , private router : Router) { 
  
    }
  
@@ -85,10 +86,16 @@ export class SignupseekComponent implements OnInit {
  
    onClickSubmit(data:any) {
      console.log(data);
-     this.signupservice.postsignup(data,this.prof).subscribe((res)=>
+     this.signupservice.postsignup(data,this.prof).subscribe((res:any)=>
      {
-       console.log(res);
-       
+      console.log(res);
+      
+      const id = res.message.split(" ")[1]
+      console.log(id);
+      localStorage.setItem('token',id)
+      
+      console.log(res);
+      this.router.navigate(['/profile'])       
      })
    }
 
