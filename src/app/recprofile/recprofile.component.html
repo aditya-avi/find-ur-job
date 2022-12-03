@@ -69,12 +69,17 @@
     <h2 style="color:grey">Educational Details</h2>
 <div class="" style="padding: 10px; margin-left: 20px;">
     <div  class="tab">
-        <button *ngFor="let item of eddetails.educationDetails" class="tablinks" (click)="openCity($event, item.degree)">{{item.degree}}</button>
+        <button *ngFor="let item of eddetails.educationDetails;let i = index" [attr.data-index]="i" class="tablinks" (click)="openCity($event, item.degree)">{{item.degree}}</button>
       </div>
       <div *ngFor="let item of eddetails.educationDetails" class="">
-      <div [id]="item.degree" class="tabcontent">
+      <div [id]="item.degree" class="">
         <h3>{{item.degree}}</h3>
-        <p>Degree Description : {{item.degreeDescription}}</p>
+        <!-- <p>Degree Description : {{item.degreeDescription}}</p> -->
+
+        <div class="login__field">
+            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Salary Per Hour :</label>
+            <input [disabled]="" value={{item.degreeDescription}}  name="email" type="text" class="login__input" placeholder="Salary Per Hour" style="max-width: 200px">
+        </div>
         <p>Insttitution Name : {{item.institutionName}}</p>
         <p> Major : {{item.major}}</p>
         <p>Starting Date : {{item.startDate}}</p>

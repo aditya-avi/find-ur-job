@@ -53,11 +53,11 @@ export class ProfileComponent implements OnInit {
  ];
 
  institution = [
-  {id: 1, name: "Giet"},
-  {id: 2, name: "IIT delhi"},
-  {id: 3, name: "NIT Delhi"},
-  {id: 4, name: "BIT meshra"},
-  {id: 5, name: "BITS Pilani"}
+  {id: 1, name: "Columbia University"},
+  {id: 2, name: "Stanford University"},
+  {id: 3, name: "Harvard University"},
+  {id: 4, name: "Yale University"},
+  {id: 5, name: "University of california"}
 ];
  pdetails = 
     {

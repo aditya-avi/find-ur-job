@@ -4,7 +4,7 @@
     <div class="">
         <div class="screen__content">
 
-            <form class="login" #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)">
+            <form class="login form-group" #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)">
                 <div class="split left">
 
                     <div class="login__field">
@@ -61,7 +61,7 @@
 
                     <div class="login__field">
                         <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-                        <input type="number" class="login__input" placeholder="Contact No" name="contact" ngModel>
+                        <input  formControlName="mobileNumber"    id="mobileNumber"    type="number" class="login__input" placeholder="Contact No" name="contact" ngModel>
                     </div>
 
                     <div class="login__field">

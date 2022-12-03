@@ -189,7 +189,8 @@ export class RecprofileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.eddetails.educationDetails);
+    
+    // console.log(this.eddetails.educationDetails);
     
 
     let id = localStorage.getItem('token')
@@ -199,7 +200,11 @@ export class RecprofileComponent implements OnInit {
       this.jobs = res.companyjobsAndDetailsList
     })
 
-
+    this.resumeService.geteducationdetails().subscribe((res:any)=>
+    {
+      this.eddetails = res.educationDetails
+    })
+    
   }
 
   openCity(evt, cityName) {

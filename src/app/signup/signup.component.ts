@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';  
 import {SignupService} from '../service/signup.service';
 import {Router} from "@angular/router"
 
@@ -15,6 +15,9 @@ import {Router} from "@angular/router"
 })
 export class SignupComponent implements OnInit {
 
+  form: FormGroup = new FormGroup({});  
+
+
   
 selected_value = null;
  jobRecruiter = false;
@@ -28,10 +31,17 @@ selected_value = null;
   useriderr:boolean=false
   emailerr:boolean=false
 
-  constructor(public signupservice : SignupService,private router: Router) { 
+  constructor(public signupservice : SignupService,private router: Router,private fb: FormBuilder) { 
+    this.form = fb.group({  
+      mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]  
+    })  
+  }  
+get f(){  
+    return this.form.controls;  
+  }  
+  
 
-  }
-
+  
 
 
   ngOnInit(): void {

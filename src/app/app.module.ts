@@ -21,6 +21,7 @@ import { SeekprofileComponent } from './seekprofile/seekprofile.component';
 import { RecprofileComponent } from './recprofile/recprofile.component';
 import { ViewjobComponent } from './viewjob/viewjob.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 
 
@@ -41,6 +42,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RecprofileComponent,
     ViewjobComponent,
     DashboardComponent,
+    EditprofileComponent,
     
   ],
   imports: [

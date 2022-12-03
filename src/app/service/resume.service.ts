@@ -75,11 +75,11 @@ resumeup(data)
 {
   const id = localStorage.getItem('token')
   // const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
-  // const headers= new HttpHeaders()
-// .set('Content-Type', 'multipart/form-data')
-const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
+  const headers= new HttpHeaders()
+.set('Content-Type', 'multipart/form-data')
+//  const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
 
- return this.http.post('http://localhost:8082/resume/uploadResume/'+id,{"type":data},{headers:headers})
+ return this.http.post('http://localhost:8082/resume/uploadResume/',{"type":data})
 }
 
 downresume(id)
@@ -93,5 +93,19 @@ getbasicdet()
 {
   const id = localStorage.getItem('token')
   return this.http.get('http://localhost:8083/job/recruiterBasicDetailsByLoginId/get/'+id)
+}
+
+editeducationdetails(degId,ed,iid,ih,major,stdate,edid)
+{
+  return this.http.post('http://localhost:8082/resume/editUserEducationDetails/post',{
+    "degreeId": degId,
+    "endDate": ed,
+    "institutionId": iid,
+    "isHighest": ih,
+    "loginId": localStorage.getItem('token'),
+    "major": major,
+    "startDate": stdate,
+    "userEducationId": edid
+  })
 }
 }

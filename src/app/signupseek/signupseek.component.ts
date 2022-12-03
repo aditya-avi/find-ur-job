@@ -3,6 +3,11 @@ import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-
 import { FormGroup, FormControl } from '@angular/forms';
 import {SignupService} from '../service/signup.service'
 import { Router } from '@angular/router';
+import { NotificationService } from '../notification.service'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
+
+
 @Component({
   selector: 'app-signupseek',
   templateUrl: './signupseek.component.html',
@@ -21,12 +26,18 @@ export class SignupseekComponent implements OnInit {
    useriderr:boolean=false
    email:any;
    emailerr:boolean=false
+   err : boolean = true
+   perr : boolean = false
+   serr : boolean = false
+   merr : boolean = false
+   paerr : boolean = false
+   mainerr : boolean = false
 
 
 
    
  
-   constructor(public signupservice : SignupService , private router : Router) { 
+   constructor(public signupservice : SignupService , private router : Router,private toast : NotificationService) { 
  
    }
  
@@ -52,9 +63,31 @@ export class SignupseekComponent implements OnInit {
      })
    }
 
+   checkphone(data)
+   {
+    console.log('call');
+    
+    const d = data.target.value
+
+    console.log(d.length);
+    if(d.length!=10)
+    {
+      this.perr = true;
+    }
+    else
+    {
+      this.perr = false
+    }
+   }
+
    checkemail(data)
    {
-     this.signupservice.validateuseremail(data.target.value).subscribe((res:any)=>
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(data.target.value.match(mailformat))
+{
+  this.merr = false;
+
+  this.signupservice.validateuseremail(data.target.value).subscribe((res:any)=>
      {
        console.log(res);
        if(res==null || res.success==null)
@@ -68,6 +101,13 @@ export class SignupseekComponent implements OnInit {
        }
        
      })
+}
+
+else
+{
+  this.merr = true;
+}
+     
    }
 
  
@@ -75,18 +115,41 @@ export class SignupseekComponent implements OnInit {
  {
    if(dta.target.value == "recruiter")
    {
-     this.profile = true
+     this.profile = false
    }
    else if(dta.target.value == "seeker")
    {
-     this.profile = false
+     this.profile = true
    }
    
+ }
+
+ checkpass(data:any)
+ {
+  
+  let regex = /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{8,16}$/;
+  if(data.target.value.match(regex))
+  {
+    this.paerr = false
+  }
+  else
+  {
+    this.paerr = true
+  }
+
+
  }
  
    onClickSubmit(data:any) {
      console.log(data);
-     this.signupservice.postsignup(data,this.prof).subscribe((res:any)=>
+    
+ if(data.address.length<=5 || data.contact.length==0 || data.dob ==0 || data.email.length ==0 || data.fname.length <=2 || data.lname.length ==0 || data.password.length <=8 || data.userid.length ==0 )
+ {
+  this.mainerr = true
+ }
+ else
+ {
+  this.signupservice.postsignup(data,this.prof).subscribe((res:any)=>
      {
       console.log(res);
       
@@ -97,6 +160,10 @@ export class SignupseekComponent implements OnInit {
       console.log(res);
       this.router.navigate(['/profile'])       
      })
-   }
+ }
+      
+     }
+     
+   
 
 }

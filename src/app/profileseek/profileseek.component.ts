@@ -107,7 +107,34 @@ export class ProfileseekComponent implements OnInit {
   basicd :any;
   edud : any;
 
-  ngOnInit(): void {
+  ssc:any=[]
+  hsc:any=[]
+  grad:any=[]
+  postgrad:any=[]
+  other:any=[]
+
+  assc:boolean=false
+  ahsc:boolean=false
+  agrad:boolean=false
+  apostgrad:boolean=false
+  aother:boolean=false
+
+  essc:boolean=true
+  ehsc:boolean=true
+  egrad:boolean=true
+  epostgrad:boolean=true
+  eother:boolean=true
+
+  ngOnInit(){
+
+    this.resumeservice.geteducationdetails().subscribe((res:any)=>
+    {
+      console.log(res.educationDetails);
+      this.eddetails = res
+      
+    })
+    // console.log(this.eddetails.educationDetails[0].startDate.toDateString(),'dateee');
+
     this.jobservice.jobapplied().subscribe((res : any)=>
     {
       console.log(res.jobsApplied[0].companyName);
@@ -122,12 +149,48 @@ export class ProfileseekComponent implements OnInit {
       
     })
 
-    this.resumeservice.geteducationdetails().subscribe((res)=>
+    
+
+  console.log(this.eddetails);
+  
+  setTimeout(() => this.setdetails(), 1000);    
+    console.log(this.hsc,"hsc");
+    console.log(this.hsc,"ssc");
+    
+  }
+
+  setdetails()
+  {
+    for(let i in this.eddetails.educationDetails)
     {
-      console.log(res);
-      this.eddetails = res
-      
-    })
+      console.log(i,this.eddetails.educationDetails[i].degree,'ccc');
+      if(this.eddetails.educationDetails[i].degree == "SSC")
+      {
+        this.ssc.push(this.eddetails.educationDetails[i])
+      }
+
+      if(this.eddetails.educationDetails[i].degree == "HSC")
+      {
+        this.hsc.push(this.eddetails.educationDetails[i])
+      }
+
+      if(this.eddetails.educationDetails[i].degree == "Graduation")
+      {
+        this.grad.push(this.eddetails.educationDetails[i])
+      }
+
+      if(this.eddetails.educationDetails[i].degree == "Post Graduation")
+      {
+        this.postgrad.push(this.eddetails.educationDetails[i])
+      }
+
+      if(this.eddetails.educationDetails[i].degree == "SSC")
+      {
+        this.other.push(this.eddetails.educationDetails[i])
+      }
+    
+
+}
   }
 
   openCity(evt, cityName) {
@@ -157,4 +220,183 @@ export class ProfileseekComponent implements OnInit {
   }
 
 
+
+
+  showssc()
+  {
+    
+    this.assc = true
+    this.ahsc = false
+    this.agrad = false
+    this.apostgrad = false
+    this.aother = false
+
+  }
+  showhsc()
+  {
+    this.assc = false
+    this.ahsc = true
+    this.agrad = false
+    this.apostgrad = false
+    this.aother = false
+  }
+  showgrad()
+  {
+    this.assc = false
+    this.ahsc = false
+    this.agrad = true
+    this.apostgrad = false
+    this.aother = false
+  }
+  showpostgrad()
+  {
+    this.assc = false
+    this.ahsc = false
+    this.agrad = false
+    this.apostgrad = true
+    this.aother = false
+  }
+  showother()
+  {
+    this.assc = false
+    this.ahsc = false
+    this.agrad = false
+    this.apostgrad = false
+    this.aother = true
+  }
+
+  editssc()
+  {
+    this.essc = false
+    this.ehsc = true
+    this.egrad = true
+    this.epostgrad = true
+    this.eother = true
+  }
+
+  edithsc()
+{
+  this.essc = true
+    this.ehsc = false
+    this.egrad = true
+    this.epostgrad = true
+    this.eother = true
+}
+
+editgrad()
+{
+  this.essc = true
+    this.ehsc = true
+    this.egrad = false
+    this.epostgrad = true
+    this.eother = true
+}
+
+editpostgrad()
+{
+  this.essc = true
+    this.ehsc = true
+    this.egrad = true
+    this.epostgrad = false
+    this.eother = true
+}
+
+editother()
+{
+  this.essc = true
+  this.ehsc = true
+  this.egrad = true
+  this.epostgrad = true
+  this.eother = false
+}
+
+
+
+jd:any; 
+in:any;
+major:any;
+stdate:any;
+eddate:any;
+add:any;
+pin:any;
+loc:any;
+
+getjd(data)
+{
+  this.jd = data.target.value;
+  // console.log(data.target.value);
+  
+}
+
+getin(data)
+{
+  this.in = data.target.value
+}
+
+getmajor(data)
+{
+  this.major = data.target.value
+}
+
+getstdate(data)
+{
+  this.stdate = data.target.value
+}
+
+geteddate(data)
+{
+  this.eddate = data.target.value
+}
+
+getadd(data)
+{
+  this.add = data.target.value
+}
+
+getpin(data)
+{
+  this.pin = data.target.value
+}
+
+getloc(data)
+{
+  this.loc = data.target.value
+}
+
+editdata(deg)
+{
+
+  let edid;
+  let act="Y";
+  console.log(deg);
+  if(deg == 1)
+  {
+    edid = this.eddetails.educationDetails[0].userEducationHistoryId
+  }
+  if(deg == 2)
+  {
+    edid = this.eddetails.educationDetails[1].userEducationHistoryId
+  }
+  if(deg == 3)
+  {
+    edid = this.eddetails.educationDetails[2].userEducationHistoryId
+  }
+  if(deg == 4)
+  {
+    edid = this.eddetails.educationDetails[3].userEducationHistoryId
+  }
+  if(deg == 5)
+  {
+    edid = this.eddetails.educationDetails[4].userEducationHistoryId
+  }
+  
+  
+  console.log(edid);
+  
+  this.resumeservice.editeducationdetails(deg,this.eddate,this.in,act,this.major,this.stdate,edid).subscribe(res =>
+    {
+      console.log(res);
+      
+    })
+}
 }
