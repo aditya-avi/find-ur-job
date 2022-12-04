@@ -66,34 +66,319 @@
     <button class="login__submit" (click)="downresume()">
        Download Resume
     </button>
-    <h2 style="color:grey">Educational Details</h2>
-<div class="" style="padding: 10px; margin-left: 20px;">
-    <div  class="tab">
-        <button *ngFor="let item of eddetails.educationDetails;let i = index" [attr.data-index]="i" class="tablinks" (click)="openCity($event, item.degree)">{{item.degree}}</button>
-      </div>
-      <div *ngFor="let item of eddetails.educationDetails" class="">
-      <div [id]="item.degree" class="">
-        <h3>{{item.degree}}</h3>
-        <!-- <p>Degree Description : {{item.degreeDescription}}</p> -->
 
-        <div class="login__field">
-            <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Salary Per Hour :</label>
-            <input [disabled]="" value={{item.degreeDescription}}  name="email" type="text" class="login__input" placeholder="Salary Per Hour" style="max-width: 200px">
-        </div>
-        <p>Insttitution Name : {{item.institutionName}}</p>
-        <p> Major : {{item.major}}</p>
-        <p>Starting Date : {{item.startDate}}</p>
-        <p>Ending Date : {{item.endDate}}</p>
-        <p>Insttitution Address : {{item.address}}</p>
-        <p>Insttitution PinCode : {{item.pinCode}}</p>
-        <p>Institution Location : {{item.location}}</p>
-      </div>
-    </div>
-      
-      
-      
+    <button class="login__submit" (click)="jobp()">
+       Post Job
+    </button>
+    <h2 style="color:grey">Educational Details</h2>
+    <div class="" style="padding: 10px; margin-left: 20px;">
+        <div  class="tab">
+            <button  class="tablinks" (click)="showssc()">SSC</button>
+            <button  class="tablinks" (click)="showhsc()">HSC</button>
+            <button  class="tablinks" (click)="showgrad()">GRADUATION</button>
+            <button  class="tablinks" (click)="showpostgrad()">POST GRADUATION</button>
+            <button  class="tablinks" (click)="showother()">OTHER</button>
+          </div>
+          <div class="">
+          <div *ngIf="assc" class="tabcontent2">
+            <h3>SSC</h3>
+         
+            <!-- <p>Degree Description : {{item.degreeDescription}}</p> -->
+            <!-- <p>Insttitution Name : {{item.institutionName}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Institute Name :</label>
+                <input [disabled]="essc" [value]="ssc[0].institutionName" (change)="getin($event)"  name="institutename" type="text" class="login__input" placeholder="Institute Name" style="max-width: 220px">
+            </div>
+            <!-- <p> Major : {{item.major}}</p> -->
+           
+            <!-- <p>Starting Date : {{item.startDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Start Date :</label>
+                <input [disabled]="essc" [value]="ssc[0].startDate"  (change)="getstdate($event)"  name="startDate" type="text" class="login__input" placeholder="startDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Ending Date : {{item.endDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">End Date :</label>
+                <input [disabled]="essc" [value]="ssc[0].endDate" (change)="geteddate($event)"  name="endDate" type="text" class="login__input" placeholder="endDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution Address : {{item.address}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Address :</label>
+                <input [disabled]="essc" [value]="ssc[0].address" (change)="getadd($event)"  name="address" type="text" class="login__input" placeholder="address" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution PinCode : {{item.pinCode}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">PinCode :</label>
+                <input [disabled]="essc" [value]="ssc[0].pinCode" (change)="getpin($event)"  name="pinCode" type="text" class="login__input" placeholder="pinCode" style="max-width: 220px">
+            </div>
+            <!-- <p>Institution Location : {{item.location}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Location :</label>
+                <input [disabled]="essc" [value]="ssc[0].location" (change)="getloc($event)"  name="location" type="text" class="login__input" placeholder="location" style="max-width: 220px">
+            </div>
+            <div class="" style="display: flex;">
+                <button (click)="editssc()" class="button login__submit" style="width: 120px;margin-right: 20px;">
+                    <span class="button__text">Edit</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+        
+                <button (click)="editdata(1)" class="button login__submit" style="width: 120px">
+                    <span class="button__text">Save</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+            </div>
+           
+          </div>
     
-</div>
+    
+    
+          <div *ngIf="ahsc" class="tabcontent2">
+            <h3>HSC</h3>
+    
+            <!-- <p>Degree Description : {{item.degreeDescription}}</p> -->
+            <!-- <p>Insttitution Name : {{item.institutionName}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Institute Name :</label>
+                <input [disabled]="ehsc" [value]="hsc[0].institutionName" (change)="getin($event)"  name="institutename" type="text" class="login__input" placeholder="Institute Name" style="max-width: 220px">
+            </div>
+            <!-- <p> Major : {{item.major}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Major :</label>
+                <input [disabled]="ehsc" [value]="hsc[0].major" (change)="getmajor($event)"  name="major" type="text" class="login__input" placeholder="major" style="max-width: 220px">
+            </div>
+            <!-- <p>Starting Date : {{item.startDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Start Date :</label>
+                <input [disabled]="ehsc" [value]="hsc[0].startDate"  (change)="getstdate($event)"  name="startDate" type="text" class="login__input" placeholder="startDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Ending Date : {{item.endDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">End Date :</label>
+                <input [disabled]="ehsc" [value]="hsc[0].endDate" (change)="geteddate($event)"  name="endDate" type="text" class="login__input" placeholder="endDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution Address : {{item.address}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Address :</label>
+                <input [disabled]="ehsc" [value]="hsc[0].address" (change)="getadd($event)"  name="address" type="text" class="login__input" placeholder="address" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution PinCode : {{item.pinCode}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">PinCode :</label>
+                <input [disabled]="ehsc" [value]="hsc[0].pinCode" (change)="getpin($event)"  name="pinCode" type="text" class="login__input" placeholder="pinCode" style="max-width: 220px">
+            </div>
+            <!-- <p>Institution Location : {{item.location}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Location :</label>
+                <input [disabled]="ehsc" [value]="hsc[0].location" (change)="getloc($event)"  name="location" type="text" class="login__input" placeholder="location" style="max-width: 220px">
+            </div>
+            <div class="" style="display: flex;">
+                <button (click)="edithsc()" class="button login__submit" style="width: 120px;margin-right: 20px;">
+                    <span class="button__text">Edit</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+        
+                <button (click)="editdata(2)" class="button login__submit" style="width: 120px">
+                    <span class="button__text">Save</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+            </div>
+           
+          </div>
+    
+    
+    
+          <div *ngIf="agrad" class="tabcontent2">
+            <h3>GRADUATION</h3>
+    
+            <!-- <p>Degree Description : {{item.degreeDescription}}</p> -->
+            <!-- <p>Insttitution Name : {{item.institutionName}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Institute Name :</label>
+                <input [disabled]="egrad" [value]="grad[0].institutionName" (change)="getin($event)"  name="institutename" type="text" class="login__input" placeholder="Institute Name" style="max-width: 220px">
+            </div>
+            <!-- <p> Major : {{item.major}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Major :</label>
+                <input [disabled]="egrad" [value]="grad[0].major" (change)="getmajor($event)"  name="major" type="text" class="login__input" placeholder="major" style="max-width: 220px">
+            </div>
+            <!-- <p>Starting Date : {{item.startDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Start Date :</label>
+                <input [disabled]="egrad" [value]="grad[0].startDate"  (change)="getstdate($event)"  name="startDate" type="text" class="login__input" placeholder="startDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Ending Date : {{item.endDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">End Date :</label>
+                <input [disabled]="egrad" [value]="grad[0].endDate" (change)="geteddate($event)"  name="endDate" type="text" class="login__input" placeholder="endDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution Address : {{item.address}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Address :</label>
+                <input [disabled]="egrad" [value]="grad[0].address" (change)="getadd($event)"  name="address" type="text" class="login__input" placeholder="address" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution PinCode : {{item.pinCode}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">PinCode :</label>
+                <input [disabled]="egrad" [value]="grad[0].pinCode" (change)="getpin($event)"  name="pinCode" type="text" class="login__input" placeholder="pinCode" style="max-width: 220px">
+            </div>
+            <!-- <p>Institution Location : {{item.location}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Location :</label>
+                <input [disabled]="egrad" [value]="grad[0].location" (change)="getloc($event)"  name="location" type="text" class="login__input" placeholder="location" style="max-width: 220px">
+            </div>
+            <div class="" style="display: flex;">
+                <button (click)="editgrad()"class="button login__submit" style="width: 120px;margin-right: 20px;">
+                    <span class="button__text">Edit</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+        
+                <button (click)="editdata(3)" class="button login__submit" style="width: 120px">
+                    <span class="button__text">Save</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+            </div>
+           
+          </div>
+    
+    
+    
+          <div *ngIf="apostgrad" class="tabcontent2">
+            <h3>POST GRADUATION</h3>
+    
+            <!-- <p>Degree Description : {{item.degreeDescription}}</p> -->
+            <!-- <p>Insttitution Name : {{item.institutionName}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Institute Name :</label>
+                <input [disabled]="epostgrad" [value]="postgrad[0].institutionName" (change)="getin($event)"  name="institutename" type="text" class="login__input" placeholder="Institute Name" style="max-width: 220px">
+            </div>
+            <!-- <p> Major : {{item.major}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Major :</label>
+                <input [disabled]="epostgrad" [value]="postgrad[0].major" (change)="getmajor($event)"  name="major" type="text" class="login__input" placeholder="major" style="max-width: 220px">
+            </div>
+            <!-- <p>Starting Date : {{item.startDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Start Date :</label>
+                <input [disabled]="epostgrad" [value]="postgrad[0].startDate"  (change)="getstdate($event)"  name="startDate" type="text" class="login__input" placeholder="startDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Ending Date : {{item.endDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">End Date :</label>
+                <input [disabled]="epostgrad" [value]="postgrad[0].endDate" (change)="geteddate($event)"  name="endDate" type="text" class="login__input" placeholder="endDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution Address : {{item.address}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Address :</label>
+                <input [disabled]="epostgrad" [value]="postgrad[0].address" (change)="getadd($event)"  name="address" type="text" class="login__input" placeholder="address" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution PinCode : {{item.pinCode}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">PinCode :</label>
+                <input [disabled]="epostgrad" [value]="postgrad[0].pinCode" (change)="getpin($event)"  name="pinCode" type="text" class="login__input" placeholder="pinCode" style="max-width: 220px">
+            </div>
+            <!-- <p>Institution Location : {{item.location}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Location :</label>
+                <input [disabled]="epostgrad" [value]="postgrad[0].location" (change)="getloc($event)"  name="location" type="text" class="login__input" placeholder="location" style="max-width: 220px">
+            </div>
+            <div class="" style="display: flex;">
+                <button (click)="editpostgrad()" class="button login__submit" style="width: 120px;margin-right: 20px;">
+                    <span class="button__text">Edit</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+        
+                <button (click)="editdata(4)" class="button login__submit" style="width: 120px">
+                    <span  class="button__text">Save</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+            </div>
+           
+          </div>
+    
+    
+    
+    
+          <div *ngIf="aother" class="tabcontent2">
+            <h3>OTHER</h3>
+        
+            <!-- <p>Degree Description : {{item.degreeDescription}}</p> -->
+            <!-- <p>Insttitution Name : {{item.institutionName}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Institute Name :</label>
+                <input [disabled]="eother" [value]="other[0].institutionName" (change)="getin($event)"  name="institutename" type="text" class="login__input" placeholder="Institute Name" style="max-width: 220px">
+            </div>
+            <!-- <p> Major : {{item.major}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Major :</label>
+                <input [disabled]="eother" [value]="other[0].major" (change)="getmajor($event)"  name="major" type="text" class="login__input" placeholder="major" style="max-width: 220px">
+            </div>
+            <!-- <p>Starting Date : {{item.startDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Start Date :</label>
+                <input [disabled]="eother" [value]="other[0].startDate"  (change)="getstdate($event)"  name="startDate" type="text" class="login__input" placeholder="startDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Ending Date : {{item.endDate}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">End Date :</label>
+                <input [disabled]="eother" [value]="other[0].endDate" (change)="geteddate($event)"  name="endDate" type="text" class="login__input" placeholder="endDate" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution Address : {{item.address}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Address :</label>
+                <input [disabled]="eother" [value]="other[0].address" (change)="getadd($event)"  name="address" type="text" class="login__input" placeholder="address" style="max-width: 220px">
+            </div>
+            <!-- <p>Insttitution PinCode : {{item.pinCode}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">PinCode :</label>
+                <input [disabled]="eother" [value]="other[0].pinCode" (change)="getpin($event)"  name="pinCode" type="text" class="login__input" placeholder="pinCode" style="max-width: 220px">
+            </div>
+            <!-- <p>Institution Location : {{item.location}}</p> -->
+            <div class="login__field">
+                <label style="margin: 10px; font-weight:bolder; font-size:20px;" for="email">Location :</label>
+                <input [disabled]="eother" [value]="other[0].location" (change)="getloc($event)"  name="location" type="text" class="login__input" placeholder="location" style="max-width: 220px">
+            </div>
+            <div class="" style="display: flex;">
+                <button (click)="editother()" class="button login__submit" style="width: 120px;margin-right: 20px;">
+                    <span class="button__text">Edit</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+        
+                <button (click)="editdata(5)" class="button login__submit" style="width: 120px">
+                    <span class="button__text">Save</span>
+                    <!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+        
+                </button>		
+            </div>
+           
+          </div>
+    
+    
+    
+        </div>
+          
+          
+          
+        
+    </div>
     <h2 style="color:grey">Employment History</h2>
 <div class="" style="padding: 10px; margin-left: 20px;">
     <div  class="tab">
@@ -107,10 +392,7 @@
         <p> Role : {{item.jobRole}}</p>
         <p>Job Start Date : {{item.jobStartDate}}</p>
         <p>Job End Date : {{item.jobEndDate}}</p>
-        <p>Project Name : {{item.projectName}}</p>
-      <p>Project Description : {{item.projectDescription}}</p>
-      <p>Project Start Date : {{item.projectStartDate}}</p>
-      <p>Project End Date : {{item.projectEndDate}}</p>
+        
       </div>
     </div>
       

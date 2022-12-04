@@ -12,28 +12,29 @@ import {ProfileseekComponent} from './profileseek/profileseek.component'
 import {RecprofileComponent} from './recprofile/recprofile.component'
 import { ViewjobComponent } from './viewjob/viewjob.component'
 import {DashboardComponent} from './dashboard/dashboard.component'
+import {AuthGuard} from './auth.guard'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignupComponent },
   { path: 'profile', component:  ProfileComponent},
-  { path: 'jobpost', component:  JobPostComponent},
-  { path: 'candhome', component:  CandHomeComponent},
+  { path: 'jobpost',canActivate:[AuthGuard], component:  JobPostComponent},
+  { path: 'candhome',canActivate:[AuthGuard], component:  CandHomeComponent},
   // { path: 'rechome', component:  RecHomeComponent},
-  { path: 'candhome',     loadChildren: () => import('./cand-home/cand-home.component').then(m => m.CandHomeComponent)},
+  { path: 'candhome',canActivate:[AuthGuard],     loadChildren: () => import('./cand-home/cand-home.component').then(m => m.CandHomeComponent)},
   { path: 'selectprofile', component:  ProfileSelectComponent},
   { path: 'seekersignup', component:  SignupseekComponent},
   { path: 'seekprofile', component:  ProfileseekComponent},
-  { path: 'recprofile', component:  RecprofileComponent},
-  { path: 'viewjob', component:  ViewjobComponent},
-  { path: 'dashboard', component:  DashboardComponent},
+  { path: 'recprofile',canActivate:[AuthGuard], component:  RecprofileComponent},
+  { path: 'viewjob',canActivate:[AuthGuard], component:  ViewjobComponent},
+  { path: 'dashboard',canActivate:[AuthGuard], component:  DashboardComponent},
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 
 export class AppRoutingModule { }

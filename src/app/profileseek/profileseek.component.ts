@@ -81,19 +81,8 @@ export class ProfileseekComponent implements OnInit {
       }
     ]
   }
-  mainskills : any = {
-    "message": "string",
-    "skills": "string",
-    "success": true,
-    "validationErrors": [
-      {
-        "errorCode": "string",
-        "errorDescription": "string",
-        "fieldName": "string",
-        "fieldValue": {}
-      }
-    ]
-  }
+
+  mainskills : any 
 
   constructor(public jobservice : JobService,public resumeservice : ResumeService) { }
 
@@ -125,7 +114,25 @@ export class ProfileseekComponent implements OnInit {
   epostgrad:boolean=true
   eother:boolean=true
 
+
+  projectdetails : any 
+
   ngOnInit(){
+
+
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
 
     this.resumeservice.geteducationdetails().subscribe((res:any)=>
     {
@@ -156,7 +163,16 @@ export class ProfileseekComponent implements OnInit {
   setTimeout(() => this.setdetails(), 1000);    
     console.log(this.hsc,"hsc");
     console.log(this.hsc,"ssc");
+
+    this.resumeservice.getuseremploymenthistory().subscribe((res:any)=>
+    {
+      console.log(res,'seekeee');
+      this.emphistory = res
+      
+    })
     
+
+
   }
 
   setdetails()
@@ -205,6 +221,51 @@ export class ProfileseekComponent implements OnInit {
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+  }
+  openCity2(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+
+showproj : boolean = false
+// projects : any;
+projdesc : any
+projenddate:any
+projname : any
+projstdate : any
+
+spproject : any
+
+  getempprojects(data)
+  {
+    console.log(data,'dataaaa');
+    
+    this.resumeservice.getprojectdetails(data).subscribe((res:any)=>
+    {
+
+      console.log(res);
+      this.projectdetails = res.projectHistories
+      this.projdesc = 
+      this.showproj = true
+      
+    })
+  }
+
+  projectno(i)
+  {
+    console.log(i);
+    
+    this.spproject = i
   }
 
   downresume()

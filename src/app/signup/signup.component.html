@@ -27,14 +27,20 @@
                     <div class="login__field">
                         <!-- <fa-icon [icon]="usericon"></fa-icon> -->
                         <input type="text" class="login__input" placeholder="Email" name="email" ngModel (blur)="checkemail($event)">
-                        <p *ngIf="emailerr" style="color: red;">UserId already Exists !</p>
+                        <p *ngIf="emailerr" style="color: red;">Email already Exists !</p>
+                        <p  style="color: red;" *ngIf="merr">Invalid Mail Id !</p>
+
 
                     </div>
 
                     <div class="login__field">
+                        <h5 style="color: red;">7 to 15 characters which should contain atlest one characters,one numeric digits and one symbols</h5>
+
                         <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-                        <input type="password" class="login__input" placeholder="Create Password" name="password"
+                        <input (change)="checkpass($event)" type="password" class="login__input" placeholder="Create Password" name="password"
                             ngModel>
+                            <p  style="color: red;" *ngIf="paerr">Invalid Password !</p>
+
                     </div>
                 </div>
                 <div class="split right">
@@ -61,7 +67,9 @@
 
                     <div class="login__field">
                         <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-                        <input  formControlName="mobileNumber"    id="mobileNumber"    type="number" class="login__input" placeholder="Contact No" name="contact" ngModel>
+                        <input  (change)="checkphone($event)"  formControlName="mobileNumber"    id="mobileNumber"    type="number" class="login__input" placeholder="Contact No" name="contact" ngModel>
+                        <p  style="color: red;" *ngIf="perr">Invalid phone Number !</p>
+
                     </div>
 
                     <div class="login__field">

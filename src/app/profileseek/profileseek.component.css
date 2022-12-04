@@ -155,6 +155,45 @@
     border-top: none;
     color: black;
   }
+
+
+  .tab2 {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    /* max-width: 300px; */
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab2 button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab2 button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab2 button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent3 {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    color: black;
+  }
   .tabcontent2 {
     /* display: none; */
     padding: 6px 12px;
@@ -212,4 +251,29 @@
   .login__input:hover {
     outline: none;
     border-bottom-color: #6A679E;
+  }
+
+
+
+  .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
   }

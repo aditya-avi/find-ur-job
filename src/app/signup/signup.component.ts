@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';  
 import {SignupService} from '../service/signup.service';
 import {Router} from "@angular/router"
 
@@ -15,10 +14,6 @@ import {Router} from "@angular/router"
 })
 export class SignupComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({});  
-
-
-  
 selected_value = null;
  jobRecruiter = false;
   usericon = faUser;
@@ -30,16 +25,17 @@ selected_value = null;
   email:any;
   useriderr:boolean=false
   emailerr:boolean=false
+  err : boolean = true
+  perr : boolean = false
+  serr : boolean = false
+  merr : boolean = false
+  paerr : boolean = false
+  mainerr : boolean = false
 
-  constructor(public signupservice : SignupService,private router: Router,private fb: FormBuilder) { 
-    this.form = fb.group({  
-      mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]  
-    })  
+  constructor(public signupservice : SignupService,private router: Router) { 
+ 
   }  
-get f(){  
-    return this.form.controls;  
-  }  
-  
+
 
   
 
@@ -47,6 +43,24 @@ get f(){
   ngOnInit(): void {
    
   }
+
+  checkphone(data)
+  {
+   console.log('call');
+   
+   const d = data.target.value
+
+   console.log(d.length);
+   if(d.length!=10)
+   {
+     this.perr = true;
+   }
+   else
+   {
+     this.perr = false
+   }
+  }
+
 
   checkuserid(data)
   {
@@ -66,23 +80,52 @@ get f(){
     })
   }
 
-  checkemail(data)
-  {
-    this.signupservice.validateuseremail(data.target.value).subscribe((res:any)=>
+   checkemail(data)
+   {
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(data.target.value.match(mailformat))
+{
+  this.merr = false;
+
+  this.signupservice.validateuseremail(data.target.value).subscribe((res:any)=>
+     {
+       console.log(res);
+       if(res==null || res.success==null)
+       {
+         this.emailerr = true
+         console.log(res.validationErrors[0].errorDescription);
+       }
+       else
+       {
+         this.emailerr = false
+       }
+       
+     })
+}
+
+else
+{
+  this.merr = true;
+}
+     
+   }
+
+   checkpass(data:any)
+   {
+    
+    let regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+    ;
+    if(data.target.value.match(regex))
     {
-      console.log(res);
-      if(res==null || res.success==null)
-      {
-        this.emailerr = true
-        console.log(res.validationErrors[0].errorDescription);
-      }
-      else
-      {
-        this.emailerr = false
-      }
-      
-    })
-  }
+      this.paerr = false
+    }
+    else
+    {
+      this.paerr = true
+    }
+  
+  
+   }
 getf(dta:any)
 {
   if(dta.target.value == "recruiter")

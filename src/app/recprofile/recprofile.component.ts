@@ -14,7 +14,7 @@ export class RecprofileComponent implements OnInit {
 
   jobs :any
 
-  constructor(public recruiterservice : RecruiterService,public router : Router, public resumeService : ResumeService) { }
+  constructor(public recruiterservice : RecruiterService,public router : Router, public resumeservice : ResumeService) { }
 
   arrowIcon = faLocationDot
   emailicon = faEnvelope
@@ -23,90 +23,31 @@ export class RecprofileComponent implements OnInit {
   dobicon = faCakeCandles
   hometownicon = faHomeUser
 
-  eddetails : any = {
-    "educationDetails": [
-      {
-        "address": "string",
-        "degree": "string1",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      },
-       {
-        "address": "string",
-        "degree": "string2",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      },
-       {
-        "address": "string",
-        "degree": "string3",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      },
-       {
-        "address": "string",
-        "degree": "string4",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      },
-       {
-        "address": "string",
-        "degree": "string5",
-        "degreeDescription": "string",
-        "endDate": "2022-11-25T19:25:53.097Z",
-        "firstName": "string",
-        "institutionName": "string",
-        "isHighestEducaton": "string",
-        "lastName": "string",
-        "location": "string",
-        "major": "string",
-        "pinCode": "string",
-        "startDate": "2022-11-25T19:25:53.097Z"
-      }
-    ],
-    "message": "string",
-    "success": true,
-    "validationErrors": [
-      {
-        "errorCode": "string",
-        "errorDescription": "string",
-        "fieldName": "string",
-        "fieldValue": {}
-      }
-    ]
-  }
+  basicd :any;
+  edud : any;
+
+  ssc:any=[]
+  hsc:any=[]
+  grad:any=[]
+  postgrad:any=[]
+  other:any=[]
+
+  assc:boolean=false
+  ahsc:boolean=false
+  agrad:boolean=false
+  apostgrad:boolean=false
+  aother:boolean=false
+
+  essc:boolean=true
+  ehsc:boolean=true
+  egrad:boolean=true
+  epostgrad:boolean=true
+  eother:boolean=true
+
+  projectdetails : any 
+
+
+  eddetails : any 
   emphistory : any = {
     "employmentDetails": [
       {
@@ -174,19 +115,7 @@ export class RecprofileComponent implements OnInit {
       }
     ]
   }
-  mainskills : any = {
-    "message": "string",
-    "skills": "string",
-    "success": true,
-    "validationErrors": [
-      {
-        "errorCode": "string",
-        "errorDescription": "string",
-        "fieldName": "string",
-        "fieldValue": {}
-      }
-    ]
-  }
+  mainskills : any 
 
   ngOnInit(): void {
     
@@ -200,14 +129,65 @@ export class RecprofileComponent implements OnInit {
       this.jobs = res.companyjobsAndDetailsList
     })
 
-    this.resumeService.geteducationdetails().subscribe((res:any)=>
+    this.resumeservice.geteducationdetails().subscribe((res:any)=>
     {
       this.eddetails = res.educationDetails
     })
+
+    setTimeout(() => this.setdetails(), 1000);    
+
     
   }
 
+  setdetails()
+  {
+    for(let i in this.eddetails.educationDetails)
+    {
+      console.log(i,this.eddetails.educationDetails[i].degree,'ccc');
+      if(this.eddetails.educationDetails[i].degree == "SSC")
+      {
+        this.ssc.push(this.eddetails.educationDetails[i])
+      }
+
+      if(this.eddetails.educationDetails[i].degree == "HSC")
+      {
+        this.hsc.push(this.eddetails.educationDetails[i])
+      }
+
+      if(this.eddetails.educationDetails[i].degree == "Graduation")
+      {
+        this.grad.push(this.eddetails.educationDetails[i])
+      }
+
+      if(this.eddetails.educationDetails[i].degree == "Post Graduation")
+      {
+        this.postgrad.push(this.eddetails.educationDetails[i])
+      }
+
+      if(this.eddetails.educationDetails[i].degree == "SSC")
+      {
+        this.other.push(this.eddetails.educationDetails[i])
+      }
+    
+
+}
+  }
+
   openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  openCity2(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -246,14 +226,198 @@ export class RecprofileComponent implements OnInit {
     
   }
 
+  jobp()
+  {
+    this.router.navigate(['/jobpost'])
+  }
+
   downresume()
   {
     const id = localStorage.getItem('token')
-    this.resumeService.downresume(id).subscribe((res)=>
+    this.resumeservice.downresume(id).subscribe((res)=>
     {
       console.log(res);
       
     })
   }
 
+  
+  showssc()
+  {
+    
+    this.assc = true
+    this.ahsc = false
+    this.agrad = false
+    this.apostgrad = false
+    this.aother = false
+
+  }
+  showhsc()
+  {
+    this.assc = false
+    this.ahsc = true
+    this.agrad = false
+    this.apostgrad = false
+    this.aother = false
+  }
+  showgrad()
+  {
+    this.assc = false
+    this.ahsc = false
+    this.agrad = true
+    this.apostgrad = false
+    this.aother = false
+  }
+  showpostgrad()
+  {
+    this.assc = false
+    this.ahsc = false
+    this.agrad = false
+    this.apostgrad = true
+    this.aother = false
+  }
+  showother()
+  {
+    this.assc = false
+    this.ahsc = false
+    this.agrad = false
+    this.apostgrad = false
+    this.aother = true
+  }
+
+  editssc()
+  {
+    this.essc = false
+    this.ehsc = true
+    this.egrad = true
+    this.epostgrad = true
+    this.eother = true
+  }
+
+  edithsc()
+{
+  this.essc = true
+    this.ehsc = false
+    this.egrad = true
+    this.epostgrad = true
+    this.eother = true
+}
+
+editgrad()
+{
+  this.essc = true
+    this.ehsc = true
+    this.egrad = false
+    this.epostgrad = true
+    this.eother = true
+}
+
+editpostgrad()
+{
+  this.essc = true
+    this.ehsc = true
+    this.egrad = true
+    this.epostgrad = false
+    this.eother = true
+}
+
+editother()
+{
+  this.essc = true
+  this.ehsc = true
+  this.egrad = true
+  this.epostgrad = true
+  this.eother = false
+}
+
+
+
+jd:any; 
+in:any;
+major:any;
+stdate:any;
+eddate:any;
+add:any;
+pin:any;
+loc:any;
+
+getjd(data)
+{
+  this.jd = data.target.value;
+  // console.log(data.target.value);
+  
+}
+
+getin(data)
+{
+  this.in = data.target.value
+}
+
+getmajor(data)
+{
+  this.major = data.target.value
+}
+
+getstdate(data)
+{
+  this.stdate = data.target.value
+}
+
+geteddate(data)
+{
+  this.eddate = data.target.value
+}
+
+getadd(data)
+{
+  this.add = data.target.value
+}
+
+getpin(data)
+{
+  this.pin = data.target.value
+}
+
+getloc(data)
+{
+  this.loc = data.target.value
+}
+
+editdata(deg)
+{
+
+  let edid;
+  let act="Y";
+  console.log(deg);
+  if(deg == 1)
+  {
+    edid = this.eddetails.educationDetails[0].userEducationHistoryId
+  }
+  if(deg == 2)
+  {
+    edid = this.eddetails.educationDetails[1].userEducationHistoryId
+  }
+  if(deg == 3)
+  {
+    edid = this.eddetails.educationDetails[2].userEducationHistoryId
+  }
+  if(deg == 4)
+  {
+    edid = this.eddetails.educationDetails[3].userEducationHistoryId
+  }
+  if(deg == 5)
+  {
+    edid = this.eddetails.educationDetails[4].userEducationHistoryId
+  }
+  
+  
+  console.log(edid);
+  
+  this.resumeservice.editeducationdetails(deg,this.eddate,this.in,act,this.major,this.stdate,edid).subscribe(res =>
+    {
+      console.log(res);
+      
+    })
+
+}
 }

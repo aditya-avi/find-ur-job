@@ -108,4 +108,17 @@ editeducationdetails(degId,ed,iid,ih,major,stdate,edid)
     "userEducationId": edid
   })
 }
+
+getprojectdetails(data)
+{
+  return this.http.post('http://localhost:8082/resume/getProjectHisoryForAEmployment/get',{
+    "employmentId": data,
+    "endDate": "2022-12-04T10:51:06.154Z",
+    "loginId": localStorage.getItem('token'),
+    "projectDescription": "string",
+    "projectId": 0,
+    "projectName": "string",
+    "startDate": "2022-12-04T10:51:06.155Z"
+  })
+}
 }

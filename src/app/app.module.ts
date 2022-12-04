@@ -22,6 +22,10 @@ import { RecprofileComponent } from './recprofile/recprofile.component';
 import { ViewjobComponent } from './viewjob/viewjob.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import {CommonModule } from '@angular/common';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -52,6 +56,8 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    CommonModule,
+    BrowserAnimationsModule
     
     
   ],
