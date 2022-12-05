@@ -1,128 +1,101 @@
 <h2 style="text-align: center; color: rgb(98, 98, 98);">Hey Recruiter ! Register Yourself !</h2>
-
 <div class="container">
-    <div class="">
-        <div class="screen__content">
+	
+	<div class="">
+		<div class="">
 
-            <form class="login form-group" #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)">
-                <div class="split left">
+			<form class="login" #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
+<div class="split left">
+	<div class="login__field">
+		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+		<input type="text" class="login__input" placeholder="userId" name="userid" ngModel   (blur)="checkuserid($event)">
+		<p *ngIf="useriderr" style="color: red;">UserId already Exists !</p>
 
-                    <div class="login__field">
-                        <!-- <fa-icon [icon]="usericon"></fa-icon> -->
-                        <input type="text" class="login__input" placeholder="userID" name="userid" ngModel
-                            (blur)="checkuserid($event)">
-                            <p *ngIf="useriderr" style="color: red;">UserId already Exists !</p>
-                    </div>
+	</div>
+	
+	<div class="login__field">
+		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+		<input type="text" class="login__input" placeholder="First Name" name="fname" ngModel>
+	</div>
 
-                    <div class="login__field">
-                        <!-- <fa-icon [icon]="usericon"></fa-icon> -->
-                        <input type="text" class="login__input" placeholder="First Name" name="fname" ngModel>
-                    </div>
-
-                    <div class="login__field">
-                        <!-- <fa-icon [icon]="usericon"></fa-icon> -->
-                        <input type="text" class="login__input" placeholder="Last Name" name="lname" ngModel>
-                    </div>
-
-                    <div class="login__field">
-                        <!-- <fa-icon [icon]="usericon"></fa-icon> -->
-                        <input type="text" class="login__input" placeholder="Email" name="email" ngModel (blur)="checkemail($event)">
-                        <p *ngIf="emailerr" style="color: red;">Email already Exists !</p>
-                        <p  style="color: red;" *ngIf="merr">Invalid Mail Id !</p>
-
-
-                    </div>
-
-                    <div class="login__field">
-                        <h5 style="color: red;">7 to 15 characters which should contain atlest one characters,one numeric digits and one symbols</h5>
-
-                        <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-                        <input (change)="checkpass($event)" type="password" class="login__input" placeholder="Create Password" name="password"
-                            ngModel>
-                            <p  style="color: red;" *ngIf="paerr">Invalid Password !</p>
-
-                    </div>
-                </div>
-                <div class="split right">
-
-                    <div class="login__field">
-                        <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-                        <label for="dob">Date Of Birth :</label>
-                        <input type="date" class="login__input" value="" min="12-01-1950" placeholder="mm-dd-yyyy" name="dob" ngModel>
-                    </div>
+	<div class="login__field">
+		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+		<input type="text" class="login__input" placeholder="Last Name" name="lname" ngModel>
+	</div>
+	
+	<div class="login__field">
+		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
+		<input type="text" class="login__input" placeholder="Email" name="email" ngModel (blur)="checkemail($event)">
+		<p *ngIf="emailerr" style="color: red;">Mail already Exists !</p>
+		<p  style="color: red;" *ngIf="merr">Invalid Mail Id !</p>
 
 
-                    <div class="login__field" *ngIf="{profile}">
-                        <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-                        <input type="text" class="login__input" placeholder="Organisation Name" name="organisation"
-                            ngModel>
-                    </div>
+	</div>
 
-                    <div class="login__field" *ngIf="{profile}">
-                        <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-                        <input type="text" class="login__input" placeholder="Organisation description"
-                            name="organisation_desc" ngModel>
-                    </div>
+	
+</div>
+<div class="split right">
+	<div class="login__field">
+		<h5 style="color: red;">7 to 15 characters which should contain atlest one characters,one numeric digits and one symbols</h5>
+
+		<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+		<input (change)="checkpass($event)" required type="text" class="login__input" placeholder="Create Password" name="password" ngModel>
+		<p  style="color: red;" *ngIf="paerr">Invalid Password !</p>
+
+	</div>
+
+	<div class="login__field">
+		<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+		<input type="date" class="login__input" placeholder="Date of birth" name="dob" ngModel>
+	</div>
 
 
-                    <div class="login__field">
-                        <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-                        <input  (change)="checkphone($event)"  formControlName="mobileNumber"    id="mobileNumber"    type="number" class="login__input" placeholder="Contact No" name="contact" ngModel>
-                        <p  style="color: red;" *ngIf="perr">Invalid phone Number !</p>
+<div class="login__field">
+	<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+	<input (change)="checkphone($event)" type="number" class="login__input" placeholder="Contact No" name="contact" ngModel>
+	<p  style="color: red;" *ngIf="perr">Invalid phone Number !</p>
+</div>
 
-                    </div>
 
-                    <div class="login__field">
-                        <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-                        <input type="text" class="login__input" placeholder="Address" name="address" ngModel>
-                    </div>
-                    <div class="" style="max-width: 150px;"><button class="login__submit" type="submit">Signup
-                            <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
+<div class="login__field">
+	<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
+	<input type="text" class="login__input" placeholder="Address" name="address" ngModel>
+</div>
+<p  style="color: red;font-weight: bolder;" *ngIf="mainerr">Please Enter Details Carefully !</p>
 
-                        </button></div>
+<div class="" style="max-width: 150px;"><button class="login__submit" type="submit">Signup
+	<fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
 
-                    <!-- <input type="submit" value="submit" style="margin-top: 150px"> -->
+</button></div>
 
-                </div>
-                <!-- <button class="button login__submit" style="margin-top: 300px"> -->
-                <!-- <span class="button__text">Signup</span> -->
-                <!-- <input class="" type="submit" value="submit">
-    <i class="button__icon fas fa-chevron-right"></i>
-    <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon>
+</div>
+                
 
-</button>		 -->
-            </form>
-            <!-- <div class="text_parent">
+				
+				<!-- <button class="button login__submit" type="submit" style="margin-top: 150px"> -->
+					<!-- <span class="button__text">Signup</span> -->
+                    <!-- <input class="button__text" type="submit" value="submit"> -->
+					<!-- <i class="button__icon fas fa-chevron-right"></i> -->
+                    <!-- <fa-icon class="button__icon fas fa-chevron-right" [icon]="arrowIcon"></fa-icon> -->
+
+				<!-- </button>				 -->
+			</form>
+                <!-- <div class="text_parent">
                     <span class="text_child">
                         Forgot Password ?
                     </span>
                     
-                    <span class="text_child" (click)="relog()">
+                    <span class="text_child">
                         Alreadu a user ?
                     </span>
                 </div> -->
-        </div>
-
-
-    </div>
+		</div>
+		<!-- <div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		 -->
+        
+	</div>
 </div>
-<br>
-<script>
-
-function padTo2Digits(num) {
-  return num.toString().padStart(2, '0');
-}
-
-function formatDate(date) {
-  return [
-    padTo2Digits(date.getDate()),
-    padTo2Digits(date.getMonth() + 1),
-    date.getFullYear(),
-  ].join('/');
-}
-
-// 👇️ 24/10/2021 (dd/mm/yyyy)
-console.log(formatDate(new Date()));
-
-
-</script>

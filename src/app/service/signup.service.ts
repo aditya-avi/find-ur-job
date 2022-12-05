@@ -20,10 +20,13 @@ export class SignupService {
     else{
       pf=1;
     }
+
+    var cn = data.organisation ? data.organisation: 'comp name';
+    var cd = data.organisation_desc ? data.organisation_desc : 'comp desc'
     
     return this.http.post('http://localhost:8762/sign-up/post',
     {"companyDescription": data.organisation_desc,
-    "companyName": data.organisation,
+    "companyName": cn,
     "email": data.email,
     "firstName": data.fname,
     "lastName": data.lname,

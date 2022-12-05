@@ -32,7 +32,7 @@ selected_value = null;
   paerr : boolean = false
   mainerr : boolean = false
 
-  constructor(public signupservice : SignupService,private router: Router) { 
+  constructor(public signupservice : SignupService,private router: Router ) { 
  
   }  
 
@@ -113,8 +113,8 @@ else
    checkpass(data:any)
    {
     
-    let regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-    ;
+    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+;
     if(data.target.value.match(regex))
     {
       this.paerr = false
