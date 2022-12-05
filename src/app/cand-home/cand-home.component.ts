@@ -16,7 +16,6 @@ export class CandHomeComponent implements OnInit {
 
   constructor(public jobservice : JobService,public utility : UtilityService) { }
   ngOnInit() {
-    
     // window.location.reload()
     
     // console.log(this.resp.companyjobsAndDetailsList[0].companyJobDetailsEntity.skillsRequired);
@@ -30,9 +29,12 @@ export class CandHomeComponent implements OnInit {
   }
   jobdetail(data)
   {
+    console.log(data);
+    
     this.jobservice.applyjob(data).subscribe((res) =>
     {
       console.log(res);
+      alert('Successfully Applied for the job')
     })
   }
 

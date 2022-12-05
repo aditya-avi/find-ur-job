@@ -48,7 +48,7 @@
                     <div class="login__field">
                         <!-- <fa-icon [icon]="passIcon"></fa-icon> -->
                         <label for="dob">Date Of Birth :</label>
-                        <input type="date" class="login__input" placeholder="Date of birth" name="dob" ngModel>
+                        <input type="date" class="login__input" value="" min="12-01-1950" placeholder="mm-dd-yyyy" name="dob" ngModel>
                     </div>
 
 
@@ -107,3 +107,22 @@
     </div>
 </div>
 <br>
+<script>
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+  return [
+    padTo2Digits(date.getDate()),
+    padTo2Digits(date.getMonth() + 1),
+    date.getFullYear(),
+  ].join('/');
+}
+
+// 👇️ 24/10/2021 (dd/mm/yyyy)
+console.log(formatDate(new Date()));
+
+
+</script>

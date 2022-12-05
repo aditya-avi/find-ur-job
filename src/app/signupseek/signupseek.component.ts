@@ -144,7 +144,7 @@ else
    onClickSubmit(data:any) {
      console.log(data);
     
- if(data.address.length<=5 || data.contact.length==0 || data.dob ==0 || data.email.length ==0 || data.fname.length <=2 || data.lname.length ==0 || data.password.length <=8 || data.userid.length ==0 )
+ if(data.address.length==0 || data.contact.length==0 || data.dob ==0 || data.email.length ==0 || data.fname.length ==0 || data.lname.length ==0 || data.password.length ==8 || data.userid.length ==0 )
  {
   this.mainerr = true
  }
