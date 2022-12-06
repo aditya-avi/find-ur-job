@@ -1,0 +1,16 @@
+<table id="customers">
+    <tr>
+      <th>Job Title</th>
+      <th>Job Description</th>
+      <th>Count Of JobSeekers</th>
+      <th>job Type</th>
+      <th>Job Applied Percentage</th>
+    </tr>
+    <tr *ngFor="let i of statsdata">
+        <td>{{i.jobTitle}}</td>
+      <td>{{i.jobDescription}}</td>
+      <td>{{i.countOfJobSeekers}}</td>
+      <td>{{i.jobType}}</td>
+      <td>{{i.jobAppliedPercentage}} %</td>
+    </tr>
+  </table>

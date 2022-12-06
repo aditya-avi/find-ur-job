@@ -13,6 +13,7 @@ import {RecprofileComponent} from './recprofile/recprofile.component'
 import { ViewjobComponent } from './viewjob/viewjob.component'
 import {DashboardComponent} from './dashboard/dashboard.component'
 import {AuthGuard} from './auth.guard'
+import {FybTrendComponent} from './fyb-trend/fyb-trend.component'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'recprofile',canActivate:[AuthGuard], component:  RecprofileComponent},
   { path: 'viewjob',canActivate:[AuthGuard], component:  ViewjobComponent},
   { path: 'dashboard',canActivate:[AuthGuard], component:  DashboardComponent},
+  { path: 'statistics',canActivate:[AuthGuard], component:  FybTrendComponent},
 
 ];
 

@@ -42,5 +42,12 @@ getinst()
 {
   this.http.get('http://localhost:8083/ui/getAllInstitution/get')
 }
+
+getststs()
+{
+  return this.http.post('http://localhost:8082/job/jobAppliedStatistics/get/',{
+    "loginId": localStorage.getItem('token')
+  })
+}
  
 }

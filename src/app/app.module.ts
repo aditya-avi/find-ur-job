@@ -25,6 +25,7 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
 import {CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FybTrendComponent } from './fyb-trend/fyb-trend.component';
 
 
 
@@ -47,6 +48,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ViewjobComponent,
     DashboardComponent,
     EditprofileComponent,
+    FybTrendComponent,
     
   ],
   imports: [

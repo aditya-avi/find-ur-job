@@ -8,10 +8,12 @@
   <a routerLink="selectprofile" routerLinkActive="active">Register</a>
 </div>
 
-<div class="topnav" *ngIf="isloggedin">
+<div class="topnav" *ngIf="isloggedin ">
   <a href="" (click)="logout()">Logout</a>
   <a class="left" style="float:left">Find Your Job</a>
-  <a routerLink="login" routerLinkActive="active">Home</a>
-  <a routerLink="selectprofile" routerLinkActive="active">Profile</a>
+  <a (click)="move()">Profile</a>
+  <a *ngIf="seek" routerLink="selectprofile" routerLinkActive="active">Home</a>
+  <a routerLink="dashboard" routerLinkActive="active">dashboard</a>
 </div>
+
 <router-outlet></router-outlet>
