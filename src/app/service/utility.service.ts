@@ -43,6 +43,11 @@ getinst()
   this.http.get('http://localhost:8083/ui/getAllInstitution/get')
 }
 
+getcompanydetails()
+{
+ return this.http.get('http://localhost:8082/ui/getAllCompany/get')
+}
+
 getststs()
 {
   return this.http.post('http://localhost:8082/job/jobAppliedStatistics/get/',{

@@ -9,7 +9,7 @@ export class SignupService {
 
   constructor(private http: HttpClient) { }
 
-  postsignup(data:any,prof:string)
+  postsignup(data:any,prof:string,comp:any)
   {
     console.log('hit01');
     var pf ;
@@ -20,12 +20,16 @@ export class SignupService {
     else{
       pf=1;
     }
-
-    var cn = data.organisation ? data.organisation: 'comp name';
-    var cd = data.organisation_desc ? data.organisation_desc : 'comp desc'
+    var cn 
+    var cd
+    if(comp!='')
+    {
+      cn = comp.companyName
+      cd = comp.companyDescription
+    }
     
     return this.http.post('http://localhost:8762/sign-up/post',
-    {"companyDescription": data.organisation_desc,
+    {"companyDescription": cd,
     "companyName": cn,
     "email": data.email,
     "firstName": data.fname,

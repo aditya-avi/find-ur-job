@@ -35,9 +35,18 @@ export class AppComponent {
   ngOnInit(): void {
     let token = localStorage.getItem('token')
     let user = localStorage.getItem('user') 
-    if(user == "JOB_SEEKER")
+    if(user == "JOB_SEEKER" && token!=null)
     {
       this.seek = true
+      this.router.navigate(['/seekprofile'])
+    }
+    else if(user == "JOB_POSTER" && token!=null)
+    {
+      this.router.navigate(['/recprofile'])
+    }
+    else if(!token||token==null || token == undefined)
+    {
+      this.router.navigate(['/'])
     }
 
     
@@ -51,7 +60,7 @@ export class AppComponent {
   logout()
   { console.log("out");
   
-    localStorage.removeItem('token');
+    localStorage.clear()
     this.Toast.fire({
       icon: 'success',
       title: 'Signed Out successfully'

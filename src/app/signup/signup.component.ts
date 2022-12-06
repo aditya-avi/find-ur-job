@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import {SignupService} from '../service/signup.service';
 import {Router} from "@angular/router"
+import {UtilityService} from '../service/utility.service'
 
 
 
@@ -32,7 +33,10 @@ selected_value = null;
   paerr : boolean = false
   mainerr : boolean = false
 
-  constructor(public signupservice : SignupService,private router: Router ) { 
+  compdata : any;
+  selectedcomp : any;
+
+  constructor(public signupservice : SignupService,private router: Router,private utilityservice : UtilityService ) { 
  
   }  
 
@@ -41,7 +45,12 @@ selected_value = null;
 
 
   ngOnInit(): void {
-   
+   this.utilityservice.getcompanydetails().subscribe((res:any)=>
+   {
+    console.log(res.companyDetails);
+    this.compdata = res.companyDetails
+    
+   })
   }
 
   checkphone(data)
@@ -144,9 +153,26 @@ relog()
   this.router.navigate(['/login'])
 }
 
+compselect(data)
+{
+  console.log(data.target.value);
+
+  for(let i in this.compdata)
+  {
+    if(data.target.value == this.compdata[i].companyId)
+    {
+      console.log(this.compdata[i]);
+      this.selectedcomp = this.compdata[i];
+
+    }
+    
+  }
+  
+}
+
   onClickSubmit(data:any) {
     console.log(data);
-    this.signupservice.postsignup(data,this.prof).subscribe((res:any)=>
+    this.signupservice.postsignup(data,this.prof,this.selectedcomp).subscribe((res:any)=>
     {
       console.log(res);
       

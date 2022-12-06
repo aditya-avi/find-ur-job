@@ -56,6 +56,11 @@
 	<p  style="color: red;" *ngIf="perr">Invalid phone Number !</p>
 </div>
 
+<select name="" id="" (change)="compselect($event)" class="login__input">
+    <option value="" >Select Organisation Name</option>
+    <option *ngFor="let c of compdata" value="{{c.companyId}}" >{{c.companyName}}</option>
+</select>
+
 
 <div class="login__field">
 	<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
