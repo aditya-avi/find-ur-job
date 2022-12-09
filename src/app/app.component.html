@@ -12,8 +12,9 @@
   <a href="" (click)="logout()">Logout</a>
   <a class="left" style="float:left">Find Your Job</a>
   <a (click)="move()">Profile</a>
-  <a *ngIf="seek" routerLink="selectprofile" routerLinkActive="active">Home</a>
+  <a *ngIf="seek" routerLink="candhome" routerLinkActive="active">Home</a>
   <a routerLink="dashboard" routerLinkActive="active">dashboard</a>
+  <a routerLink="statistics" routerLinkActive="active">Job Trend</a>
 </div>
 
 <router-outlet></router-outlet>

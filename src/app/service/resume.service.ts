@@ -73,13 +73,16 @@ getuserfetails()
 
 resumeup(data)
 {
+  const data2: FormData = new FormData();
+  data2.append('file', data);
+
   const id = localStorage.getItem('token')
   // const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
   const headers= new HttpHeaders()
 .set('Content-Type', 'multipart/form-data')
 //  const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
 
- return this.http.post('http://localhost:8082/resume/uploadResume/',{"type":data})
+ return this.http.post('http://localhost:8082/resume/uploadResume/',data,{headers:headers})
 }
 
 downresume(id)
