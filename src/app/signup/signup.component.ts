@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faUser,faLock,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faUser,faLock,faCircleChevronRight, faL } from '@fortawesome/free-solid-svg-icons';
 import {SignupService} from '../service/signup.service';
 import {Router} from "@angular/router"
 import {UtilityService} from '../service/utility.service'
@@ -32,6 +32,9 @@ selected_value = null;
   merr : boolean = false
   paerr : boolean = false
   mainerr : boolean = false
+  fnameerr : boolean = false
+  lnameerr : boolean = false
+
 
   compdata : any;
   selectedcomp : any;
@@ -51,6 +54,40 @@ selected_value = null;
     this.compdata = res.companyDetails
     
    })
+  }
+
+  checkfname(data)
+  {
+    var nameFormat = /^[A-Za-z]+$/;
+    console.log(data.target.value);
+    
+    if(data.target.value.match(nameFormat))
+{
+  this.fnameerr = false
+  console.log('match');
+  
+}
+else{
+  this.fnameerr = true
+}  }
+
+
+  checklname(data)
+  {
+    var nameFormat = /^[A-Za-z]+$/;
+    console.log(data.target.value);
+    
+    if(data.target.value.match(nameFormat))
+{
+  this.lnameerr = false
+  console.log('match');
+  
+}
+else{
+  this.lnameerr = true
+}
+console.log(this.lnameerr);
+
   }
 
   checkphone(data)
@@ -172,6 +209,13 @@ compselect(data)
 
   onClickSubmit(data:any) {
     console.log(data);
+
+    if(data.address.length==0 || data.contact.length==0 || data.dob ==0 || data.email.length ==0 || data.fname.length ==0 || data.lname.length ==0 || data.password.length ==8 || data.userid.length ==0 || this.fnameerr || this.lnameerr)
+    {
+     this.mainerr = true
+    }
+    else
+    {
     this.signupservice.postsignup(data,this.prof,this.selectedcomp).subscribe((res:any)=>
     {
       console.log(res);
@@ -184,6 +228,7 @@ compselect(data)
       this.router.navigate(['/profile'])
       
     })
+  }
 
     
  }

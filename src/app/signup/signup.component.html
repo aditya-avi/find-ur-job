@@ -8,19 +8,23 @@
 <div class="split left">
 	<div class="login__field">
 		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
-		<input type="text" class="login__input" placeholder="userId" name="userid" ngModel   (blur)="checkuserid($event)">
+		<input type="text" class="login__input" placeholder="userId" name="userid" ngModel (blur)="checkuserid($event)">
 		<p *ngIf="useriderr" style="color: red;">UserId already Exists !</p>
 
 	</div>
 	
 	<div class="login__field">
 		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
-		<input type="text" class="login__input" placeholder="First Name" name="fname" ngModel>
+		<input (blur)="checkfname($event)" type="text" class="login__input" placeholder="First Name" name="fname" ngModel>
+        <p *ngIf="fnameerr" style="color: red;">First Name Can only contains Alphabets !</p>
+
 	</div>
 
 	<div class="login__field">
 		<!-- <fa-icon [icon]="usericon"></fa-icon> -->
-		<input type="text" class="login__input" placeholder="Last Name" name="lname" ngModel>
+		<input (blur)="checklname($event)" type="text" class="login__input" placeholder="Last Name" name="lname" ngModel>
+        <p *ngIf="lnameerr" style="color: red;">Last Name Can only contains Alphabets !</p>
+
 	</div>
 	
 	<div class="login__field">
@@ -39,7 +43,7 @@
 		<h5 style="color: red;">7 to 15 characters which should contain atlest one characters,one numeric digits and one symbols</h5>
 
 		<!-- <fa-icon [icon]="passIcon"></fa-icon> -->
-		<input (change)="checkpass($event)" required type="text" class="login__input" placeholder="Create Password" name="password" ngModel>
+		<input (change)="checkpass($event)" required type="password" class="login__input" placeholder="Create Password" name="password" ngModel>
 		<p  style="color: red;" *ngIf="paerr">Invalid Password !</p>
 
 	</div>

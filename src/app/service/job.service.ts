@@ -13,7 +13,9 @@ export class JobService {
    var loginId=localStorage.getItem('token')
     console.log(loginId);
     
+    console.log(data);
     console.log(skills);
+    
     
     return this.http.post('http://localhost:8083/job/postJob/post',
     {
@@ -22,7 +24,7 @@ export class JobService {
       "jobDescription": data.jobDescription,
       "jobLocation": data.jobLocation,
       "jobTitle": data.jobTitle,
-      "jobTypeId": 1,
+      "jobTypeId": data.jobType,
       "loginId": loginId,
       "salaryPerHour": 0,
       "skillsRequired":skills

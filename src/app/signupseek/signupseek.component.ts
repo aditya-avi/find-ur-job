@@ -33,6 +33,9 @@ export class SignupseekComponent implements OnInit {
    paerr : boolean = false
    mainerr : boolean = false
 
+   fnameerr : boolean = false
+   lnameerr : boolean = false
+
 
 
    
@@ -43,6 +46,40 @@ export class SignupseekComponent implements OnInit {
  
    ngOnInit(): void {
     
+   }
+
+   checkfname(data)
+   {
+     var nameFormat = /^[A-Za-z]+$/;
+     console.log(data.target.value);
+     
+     if(data.target.value.match(nameFormat))
+ {
+   this.fnameerr = false
+   console.log('match');
+   
+ }
+ else{
+   this.fnameerr = true
+ }  }
+ 
+ 
+   checklname(data)
+   {
+     var nameFormat = /^[A-Za-z]+$/;
+     console.log(data.target.value);
+     
+     if(data.target.value.match(nameFormat))
+ {
+   this.lnameerr = false
+   console.log('match');
+   
+ }
+ else{
+   this.lnameerr = true
+ }
+ console.log(this.lnameerr);
+ 
    }
 
    checkuserid(data)
@@ -144,7 +181,7 @@ else
    onClickSubmit(data:any) {
      console.log(data);
     
- if(data.address.length==0 || data.contact.length==0 || data.dob ==0 || data.email.length ==0 || data.fname.length ==0 || data.lname.length ==0 || data.password.length ==8 || data.userid.length ==0 )
+ if(data.address.length==0 || data.contact.length==0 || data.dob ==0 || data.email.length ==0 || data.fname.length ==0 || data.lname.length ==0 || data.password.length ==8 || data.userid.length ==0 ||this.fnameerr||this.lnameerr)
  {
   this.mainerr = true
  }

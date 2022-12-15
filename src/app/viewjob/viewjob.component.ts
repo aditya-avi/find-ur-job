@@ -162,8 +162,7 @@ acceptjob()
 {
  this.jobservice.acceptjob(this.name.data.jobid).subscribe((res)=>
  {
-  console.log(res);
-  
+window.location.reload()  
  })
 
  
@@ -174,6 +173,7 @@ rejectjob()
   this.jobservice.rejectjob(this.name.data.jobId).subscribe((res)=>
   {
     console.log(res);
+    window.location.reload()
     
   })
 }
